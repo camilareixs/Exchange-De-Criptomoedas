@@ -6,7 +6,7 @@ package view;
 
 /**
  *
- * @author user
+ * @author camilareixs
  */
 public class janelaSenhaSaldo extends javax.swing.JFrame {
 

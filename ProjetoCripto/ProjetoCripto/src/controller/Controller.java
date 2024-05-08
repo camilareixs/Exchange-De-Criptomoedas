@@ -5,6 +5,7 @@
 package controller;
 
 import view.janelaLogin;
+import view.janelaSenhaSaldo;
 
 /**
  *
@@ -12,9 +13,19 @@ import view.janelaLogin;
  */
 public class Controller {
     private janelaLogin login;
+    private janelaSenhaSaldo saldo;
     private String cpf;
     private int senha;
 
+    public janelaSenhaSaldo getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(janelaSenhaSaldo saldo) {
+        this.saldo = saldo;
+    }
+
+    
     public janelaLogin getLogin() {
         return login;
     }
@@ -39,7 +50,9 @@ public class Controller {
         this.senha = senha;
     }
 
-    
+  public boolean verificarSenha(int senha) {
+    return this.senha == senha;
+}  
     
     
     

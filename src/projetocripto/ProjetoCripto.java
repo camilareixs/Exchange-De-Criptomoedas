@@ -4,7 +4,7 @@
  */
 package projetocripto;
 
-import view.janelaLogin;
+import view.janelaCadastro;
 
 /**
  * 01/05/2024
@@ -16,8 +16,8 @@ public class ProjetoCripto {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        janelaLogin login = new janelaLogin();
-        login.setVisible(true);
+        janelaCadastro cadastro = new janelaCadastro();
+        cadastro.setVisible(true);
         
         
     }

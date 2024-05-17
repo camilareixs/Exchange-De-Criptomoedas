@@ -4,54 +4,89 @@
  */
 package view;
 
+import DAO.Conexao;
 import controller.Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 
 /**
  *
  * @author user
  */
+
+//ARRUMAR PARA MVC 
+
+
 public class janelaLogin extends javax.swing.JFrame {
 
     /**
      * Creates new form janelaLogin
      */
-    public janelaLogin() {
+    public janelaLogin(String nome, String cpf) {
         initComponents();
-        control = new Controller(); 
-        control.setLogin(this); 
+        control = new Controller(nome, cpf); 
         setupActionListeners();
     }
     
     
     private void setupActionListeners() {
     btEntrar.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            
-            String cpf = txtCpf.getText();
-            String senha = txtSenha.getText();
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                String nome = txtNome.getText();
+                String senha = String.valueOf(txtSenha.getText());
 
-            if (!cpf.matches("\\d{11}")) {
-                JOptionPane.showMessageDialog(null, "Por favor, insira um CPF válido sem pontos e traços e com 11 digitos numéricos.");
-                return;
+                if (nome.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Por favor, insira um nome válido.");
+                    return;
+                }
+
+                if (!senha.matches("\\d{6}")) {
+                    JOptionPane.showMessageDialog(null, "Por favor, insira uma senha numérica de 6 dígitos.");
+                    return;
+                }
+
+                try {
+                    Conexao conexao = new Conexao();
+                    Connection connection = conexao.getConnection();
+
+                    String sql = "SELECT * FROM cadastro WHERE nome = ? AND senha = ?";
+                    PreparedStatement statement = connection.prepareStatement(sql);
+                    statement.setString(1, nome);
+                    statement.setString(2, senha);
+
+                    ResultSet resultSet = statement.executeQuery();
+
+                    if (resultSet.next()) {
+                        // Usuário autenticado com sucesso
+                        control.setNome(nome);
+                        control.setCpf(resultSet.getString("cpf"));
+                       janelaMenu menu = new janelaMenu(control);
+                        menu.setVisible(true);
+                    } else {
+                        // Usuário não encontrado
+                        JOptionPane.showMessageDialog(null, "Nome ou senha inválidos.");
+                    }
+
+                    resultSet.close();
+                    statement.close();
+                    connection.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Erro ao conectar com o banco de dados.");
+                }
             }
+        });
+    }
 
-            if (!senha.matches("\\d{6}")) {
-                JOptionPane.showMessageDialog(null, "Por favor, insira uma senha numérica de 6 dígitos.");
-                return;
-            }
-
-            
-            JFrame janelaMenu = new janelaMenu();
-     
-            janelaMenu.setVisible(true);
-        }
-    });
-}
     
     
     
@@ -68,12 +103,11 @@ public class janelaLogin extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         pnFundo = new javax.swing.JPanel();
         txtSenha = new javax.swing.JTextField();
-        txtCpf = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
         btEntrar = new javax.swing.JButton();
-        lblCpf = new javax.swing.JLabel();
+        lblNome = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
-        lblTitulo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,7 +115,7 @@ public class janelaLogin extends javax.swing.JFrame {
 
         txtSenha.setToolTipText("senha");
 
-        txtCpf.setToolTipText("cpf");
+        txtNome.setToolTipText("cpf");
 
         btEntrar.setText("Entrar");
         btEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -90,15 +124,12 @@ public class janelaLogin extends javax.swing.JFrame {
             }
         });
 
-        lblCpf.setText("CPF:");
+        lblNome.setText("NOME");
 
         lblSenha.setText("SENHA:");
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTitulo.setText("LOGIN");
-
-        lblTitulo1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblTitulo1.setText("Exchange Criptomoedas CamiDuda");
 
         javax.swing.GroupLayout pnFundoLayout = new javax.swing.GroupLayout(pnFundo);
         pnFundo.setLayout(pnFundoLayout);
@@ -112,14 +143,12 @@ public class janelaLogin extends javax.swing.JFrame {
                             .addComponent(btEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(157, 157, 157))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnFundoLayout.createSequentialGroup()
-                            .addGroup(pnFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblTitulo1)
-                                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(97, 97, 97)))
                     .addGroup(pnFundoLayout.createSequentialGroup()
                         .addGroup(pnFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCpf)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNome)
                             .addComponent(lblSenha)
                             .addGroup(pnFundoLayout.createSequentialGroup()
                                 .addGap(76, 76, 76)
@@ -132,18 +161,16 @@ public class janelaLogin extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addComponent(lblTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(lblCpf)
+                .addComponent(lblNome)
                 .addGap(2, 2, 2)
-                .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(btEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addComponent(lblTitulo1)
-                .addGap(14, 14, 14))
+                .addGap(90, 90, 90))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,12 +199,11 @@ public class janelaLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEntrar;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel lblCpf;
+    private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JLabel lblTitulo1;
     private javax.swing.JPanel pnFundo;
-    private javax.swing.JTextField txtCpf;
+    private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

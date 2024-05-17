@@ -60,12 +60,12 @@ public class janelaMenu extends javax.swing.JFrame {
                    janelaSenhaSaldo extrato = new janelaSenhaSaldo(control, opcao);
                     extrato.setVisible(true);
                     break;
-                    /*
+
                 case "3":
-                janelaDeposito deposito = new janelaDeposito(control.getNome(), control.getCpf());
-                deposito.setVisible(true);
+               janelaDeposito deposit = new janelaDeposito();
+                    deposit.setVisible(true);
                     break;
-                
+                                    /*
                 case "4":
                 janelaSacar sacar = new janelaSacar(control.getNome(), control.getCpf());
                 sacar.setVisible(true);

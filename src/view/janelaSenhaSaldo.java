@@ -12,11 +12,10 @@ public class janelaSenhaSaldo extends javax.swing.JFrame {
     private Controller control;
     private String opcao;
 
-   public janelaSenhaSaldo(String opcao, String nome, String cpf) { 
+   public janelaSenhaSaldo(Controller control, String opcao) { 
         initComponents();
-        this.control = new Controller(nome, cpf);
+        this.control = control;
         this.opcao = opcao;
-     
     }
     
     
@@ -143,8 +142,17 @@ public class janelaSenhaSaldo extends javax.swing.JFrame {
     private void btEntrarSaldoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btEntrarSaldoMouseClicked
          String senha = txtSenhaSaldo.getText(); 
     if (control.senhaCorreta(senha, control)) {
-        janelaInfoSaldo menu = new janelaInfoSaldo(control);
-        menu.setVisible(true);}
+  
+    switch (opcao) {
+            case "1":
+                janelaInfoSaldo menu = new janelaInfoSaldo(control);
+                menu.setVisible(true);
+                break;
+            case "2":
+                janelaExtrato extrato = new janelaExtrato();
+                extrato.setVisible(true);
+                break;}
+}
     }//GEN-LAST:event_btEntrarSaldoMouseClicked
 
     /**

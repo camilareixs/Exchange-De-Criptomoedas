@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.DriverManager;
+import view.janelaDeposito;
 
 /**
  *
@@ -30,11 +31,13 @@ public class Controller {
     private double saldoBitcoin;
     private double saldoEthereum;
     private double saldoRipple;
+    private janelaDeposito deposito;
 
 
     public Controller(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
+        this.deposito = new janelaDeposito(nome);
     }
     
     public boolean senhaCorreta(String senha, Controller control) {

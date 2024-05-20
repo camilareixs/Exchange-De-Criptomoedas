@@ -5,13 +5,12 @@
 package view;
 
 import controller.DepositoController;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.sql.SQLException;
+import controller.Controller;
 
 
 /**
@@ -20,17 +19,16 @@ import javax.swing.JTextField;
  */
 public class janelaDeposito extends javax.swing.JFrame {
     
-    private DepositoController control;
+   private DepositoController control;
+    private String nome;
 
-    /**
-     * Creates new form janelaDeposito
-     */
-    public janelaDeposito() {
+    public janelaDeposito(String nome) {
        initComponents();
-       this.control = new DepositoController();
+       this.nome = nome;
+       this.control = new DepositoController(nome);
     }
-  
-     
+    
+   
    
         @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -141,15 +139,18 @@ public class janelaDeposito extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairDepositoMouseClicked
 
     private void btDepositarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDepositarMouseClicked
+         try {
         double valor = Double.parseDouble(txtInserirValor.getText());
-                 String cpf = control.getCpf();
-        try {
-            this.control.depositar(cpf, valor);
-        } catch (SQLException ex) {
-            Logger.getLogger(janelaDeposito.class.getName()).log(Level.SEVERE, null, ex);
-        }
-                double saldoAtualizado = control.getSaldoReais();
-                txtMostrarSaldo.setText(String.valueOf(saldoAtualizado));
+        
+        System.out.println("Nome: " + nome);
+        System.out.println("Valor: " + valor);
+        this.control.depositar(nome, valor);
+        
+        double saldoAtualizado = control.getSaldoReais();
+        txtMostrarSaldo.setText(String.valueOf(saldoAtualizado));
+    } catch (SQLException e) {
+        System.out.println(e.getMessage());
+    }
     }//GEN-LAST:event_btDepositarMouseClicked
 
 

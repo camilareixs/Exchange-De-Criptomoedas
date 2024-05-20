@@ -3,41 +3,43 @@ package controller;
 import DAO.DepositoDAO;
 import java.sql.SQLException;
 
+
+
+
 public class DepositoController {
     private DepositoDAO depositoDAO;
-    private String cpf;
+    private String nome;
 
-    public DepositoController(String cpf) {
-        this.cpf = cpf;
+    public DepositoController(String nome) {
+        this.nome = nome;
         this.depositoDAO = new DepositoDAO();
     }
     
     public DepositoController( ) {
-        
+         this.depositoDAO = new DepositoDAO();
     }
     
-    public String getCpf() {
-    return this.cpf;
-}
+    public String getNome() {
+        return this.nome;
+    }
 
-   public void depositar(String conta, double valor) throws SQLException {                                         
-        this.depositoDAO.depositar(conta, valor); 
+    public void depositar(String nome, double valor) throws SQLException {                                         
         try {
-            depositoDAO.depositar(cpf, valor);
+            depositoDAO.depositar(nome, valor);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Erro ao depositar: " + e.getMessage());
+            throw e;
         }
     }
 
     public double getSaldoReais() {
         try {
-            return depositoDAO.getSaldoReais(cpf);
+            return depositoDAO.getSaldoReais(nome);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Erro ao obter saldo: " + e.getMessage());
         }
 
         return 0;
     }
-
-   
 }
+

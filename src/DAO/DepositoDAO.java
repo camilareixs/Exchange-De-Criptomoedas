@@ -15,50 +15,49 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DepositoDAO {
-    
     private final Conexao conexao;
 
     public DepositoDAO() {
         this.conexao = new Conexao();
     }
 
-    public void depositar(String cpf, double valor) {
-        
-    String sql = "UPDATE cadastro SET saldoReais = saldoReais + ? WHERE cpf = ?";
-
-    try (Connection conn = this.conexao.getConnection();
-         PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-        pstmt.setDouble(1, valor);
-        pstmt.setString(2, cpf);
-
-        pstmt.executeUpdate();
-    } catch (SQLException e) {
-        System.out.println(e.getMessage());
-    }
-}
-
-    public double getSaldoReais(String cpf) throws SQLException {
-        String sql = "SELECT saldoReais FROM cadastro WHERE cpf = ?";
+    public void depositar(String nome, double valor) throws SQLException {
+        String sql = "UPDATE cadastro SET reais = reais + ? WHERE nome = ?";
 
         try (Connection conn = this.conexao.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setString(1, cpf);
+            pstmt.setDouble(1, valor);
+            pstmt.setString(2, nome);
+
+            int affectedRows = pstmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Deposito falhou, nenhuma linha afetada.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao executar SQL para depositar: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    public double getSaldoReais(String nome) throws SQLException {
+        String sql = "SELECT reais FROM cadastro WHERE nome = ?";
+
+        try (Connection conn = this.conexao.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, nome);
 
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                return rs.getDouble("saldoReais");
+                return rs.getDouble("reais");
+            } else {
+                throw new SQLException("Falha ao obter saldo, nenhum registro encontrado.");
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Erro ao executar SQL para obter saldo: " + e.getMessage());
+            throw e;
         }
-
-        return 0;
     }
-
-    
-    
-    
 }

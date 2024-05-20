@@ -62,9 +62,10 @@ public class janelaMenu extends javax.swing.JFrame {
                     break;
 
                 case "3":
-               janelaDeposito deposit = new janelaDeposito();
-                    deposit.setVisible(true);
-                    break;
+               String nome = control.getNome(); 
+               janelaDeposito deposit = new janelaDeposito(nome); 
+               deposit.setVisible(true);
+               break;
                                     /*
                 case "4":
                 janelaSacar sacar = new janelaSacar(control.getNome(), control.getCpf());

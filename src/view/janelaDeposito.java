@@ -21,13 +21,17 @@ public class janelaDeposito extends javax.swing.JFrame {
     
    private DepositoController control;
    private String nome;
+  
+   
     
    
     public janelaDeposito(String nome) {
         initComponents();
         this.nome = nome;
         this.control = new DepositoController();
+
     }
+    
     
    
         @SuppressWarnings("unchecked")
@@ -135,7 +139,7 @@ public class janelaDeposito extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairDepositoActionPerformed
 
     private void btSairDepositoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSairDepositoMouseClicked
-        
+       
     }//GEN-LAST:event_btSairDepositoMouseClicked
 
     private void btDepositarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDepositarMouseClicked
@@ -143,6 +147,7 @@ public class janelaDeposito extends javax.swing.JFrame {
             double valor = Double.parseDouble(txtInserirValor.getText());
 
             control.depositar(nome, valor);
+
             
             double saldoAtualizado = control.getSaldoReais(nome);
             txtMostrarSaldo.setText(String.valueOf(saldoAtualizado));

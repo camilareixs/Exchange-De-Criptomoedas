@@ -30,11 +30,14 @@ public class janelaInfoSaldo extends javax.swing.JFrame {
     public void atualizarInfo() {
         txtNomeSaldo.setText("" + control.getNome());
         txtCpfSaldo.setText("" + control.getCpf());
-        txtReaisSaldo.setText("" + control.getSaldoReais());
+        double saldoAtualizado = control.getSaldoReais();
+        txtReaisSaldo.setText(String.valueOf(saldoAtualizado));
         txtBitcoinSaldo.setText("" + control.getSaldoBitcoin());
         txtEthereumSaldo.setText("" + control.getSaldoEthereum());
         txtRippleSaldo.setText("" + control.getSaldoRipple());
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -189,7 +192,9 @@ public class janelaInfoSaldo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSairSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairSaldoActionPerformed
-        // TODO add your handling code here:
+        janelaMenu menu = new janelaMenu(control);
+
+        menu.setVisible(true);
     }//GEN-LAST:event_btSairSaldoActionPerformed
 
     private void btSairSaldoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSairSaldoMouseClicked

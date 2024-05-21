@@ -10,6 +10,8 @@ import controller.Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import model.Cotacao;
+
 
 /**
  *
@@ -18,11 +20,13 @@ import javax.swing.JOptionPane;
 public class janelaMenu extends javax.swing.JFrame {
     
     private Controller control;
+    private Cotacao modelo;
  
     
    public janelaMenu(Controller control) { 
    
         this.control = control;
+        this.modelo = new Cotacao();
         initComponents();
         setupMenu();
         setupActionListeners();
@@ -50,42 +54,48 @@ public class janelaMenu extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             String opcao = txtEscolherOp.getText();
+            String nome;
 
             switch (opcao) {
                 case "1":
-                    // Abra a tela "Consultar saldo"
                     janelaSenhaSaldo senhaSaldo = new janelaSenhaSaldo(control, opcao);
                     senhaSaldo.setVisible(true);
                     break;
 
                 case "2":
-                   janelaSenhaSaldo extrato = new janelaSenhaSaldo(control, opcao);
+                    janelaSenhaSaldo extrato = new janelaSenhaSaldo(control, opcao);
                     extrato.setVisible(true);
                     break;
 
                 case "3":
-               String nome = control.getNome(); 
-               janelaDeposito deposit = new janelaDeposito(nome); 
-               deposit.setVisible(true);
-               break;
-                                    /*
+                    nome = control.getNome(); 
+                    janelaDeposito deposit = new janelaDeposito(nome); 
+                    deposit.setVisible(true);
+                    break;
+                                    
                 case "4":
-                janelaSacar sacar = new janelaSacar(control.getNome(), control.getCpf());
-                sacar.setVisible(true);
+                    nome = control.getNome(); 
+                    janelaSacar sacar = new janelaSacar(nome);
+                    sacar.setVisible(true);
                     break;
                     
-                    case "5":
-                    janelaComprar comprar = new janelaComprar("5");
+                case "5":
+                    janelaSenhaSaldo comprar = new janelaSenhaSaldo(control, opcao);
                     comprar.setVisible(true);
-                        break;   
-                        
+                    break;
+                    
+                     
                      case "6":
-                    janelaVender vender = new janelaVender("6");
-                    vender.setVisible(true);
-                        break;    
-                        */
+                    
+                        break;  
                         
-                    // ...
+                case "7":
+                    janelaCotacao cotacao = new janelaCotacao(modelo);
+                    cotacao.setVisible(true);
+                    break;
+                       
+                        
+                   
                     case "8":
                         // Abra a tela "Sair"
                         break;

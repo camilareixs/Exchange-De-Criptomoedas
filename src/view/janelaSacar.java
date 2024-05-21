@@ -4,7 +4,13 @@
  */
 package view;
 
-import controller.Controller;
+
+import controller.SacarController;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import java.sql.SQLException;
 
 /**
  *
@@ -12,12 +18,13 @@ import controller.Controller;
  */
 public class janelaSacar extends javax.swing.JFrame {
 
-    private Controller control;
-    /**
-     * Creates new form janelaSacar
-     */
-    public janelaSacar() {
+    private SacarController control;
+    private String nome;
+    
+    public janelaSacar(String nome) {
         initComponents();
+         this.nome = nome;
+        this.control = new SacarController();
     }
 
     /**
@@ -35,6 +42,7 @@ public class janelaSacar extends javax.swing.JFrame {
         txtInserirSacar = new javax.swing.JTextField();
         btSacar = new javax.swing.JButton();
         lblSaldoSacar = new javax.swing.JLabel();
+        txtMostrarSaldoSacar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,7 +65,13 @@ public class janelaSacar extends javax.swing.JFrame {
             }
         });
 
+        btSacar.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         btSacar.setText("SACAR");
+        btSacar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btSacarMouseClicked(evt);
+            }
+        });
 
         lblSaldoSacar.setText("SALDO ATUAL:");
 
@@ -67,20 +81,23 @@ public class janelaSacar extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(145, 145, 145)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblTituloSacar)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addComponent(lblTituloSacar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btSairSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap(101, Short.MAX_VALUE)
+                .addComponent(lblSaldoSacar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtMostrarSaldoSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(131, 131, 131))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblSaldoSacar)
-                        .addGap(91, 91, 91))
-                    .addComponent(txtInserirSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(128, 128, 128)
+                        .addComponent(txtInserirSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(145, 145, 145)
+                        .addComponent(btSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -89,15 +106,17 @@ public class janelaSacar extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(lblTituloSacar)
-                        .addGap(101, 101, 101)
-                        .addComponent(txtInserirSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblTituloSacar))
                     .addComponent(btSairSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(101, 101, 101)
+                .addComponent(txtInserirSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addComponent(lblSaldoSacar)
-                .addGap(39, 39, 39))
+                .addComponent(btSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSaldoSacar)
+                    .addComponent(txtMostrarSaldoSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -115,14 +134,38 @@ public class janelaSacar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSairSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairSacarActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_btSairSacarActionPerformed
 
     private void btSairSacarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSairSacarMouseClicked
-      janelaMenu menu = new janelaMenu(control);
-
-        menu.setVisible(true);
+   
     }//GEN-LAST:event_btSairSacarMouseClicked
+
+    private void btSacarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSacarMouseClicked
+         try {
+            double valor = Double.parseDouble(txtInserirSacar.getText());
+
+            control.sacar(nome, valor);
+
+            
+            double saldoAtualizado = control.getSaldoReais(nome);
+            txtMostrarSaldoSacar.setText(String.valueOf(saldoAtualizado));
+            
+        } catch (SQLException e) {
+            System.out.println("Erro de SQL: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Valor inserido inválido: " + txtInserirSacar.getText());
+        } catch (Exception e) {
+            System.out.println("Erro inesperado: " + e.getMessage());
+        }
+        
+    }//GEN-LAST:event_btSacarMouseClicked
+    
+    
+    
+    public JTextField getTxtMostrarSaldoSacar() {
+        return txtMostrarSaldoSacar;
+    }
 
     /**
      * @param args the command line arguments
@@ -158,6 +201,106 @@ public class janelaSacar extends javax.swing.JFrame {
 //            }
 //        });
     
+    public void setTxtMostrarSaldoSacar(JTextField txtMostrarSaldoSacar) {
+        this.txtMostrarSaldoSacar = txtMostrarSaldoSacar;
+    }
+
+    public SacarController getControl() {
+        return control;
+    }
+
+    public void setControl(SacarController control) {
+        this.control = control;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public JButton getBtSacar() {
+        return btSacar;
+    }
+
+    public void setBtSacar(JButton btSacar) {
+        this.btSacar = btSacar;
+    }
+
+    public JButton getBtSairSacar() {
+        return btSairSacar;
+    }
+
+    public void setBtSairSacar(JButton btSairSacar) {
+        this.btSairSacar = btSairSacar;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JLabel getLblSaldoSacar() {
+        return lblSaldoSacar;
+    }
+
+    public void setLblSaldoSacar(JLabel lblSaldoSacar) {
+        this.lblSaldoSacar = lblSaldoSacar;
+    }
+
+    public JLabel getLblTituloSacar() {
+        return lblTituloSacar;
+    }
+
+    public void setLblTituloSacar(JLabel lblTituloSacar) {
+        this.lblTituloSacar = lblTituloSacar;
+    }
+
+    public JTextField getTxtInserirSacar() {
+        return txtInserirSacar;
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(janelaSacar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(janelaSacar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(janelaSacar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(janelaSacar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new janelaSacar().setVisible(true);
+//            }
+//        });
+    public void setTxtInserirSacar(JTextField txtInserirSacar) {
+        this.txtInserirSacar = txtInserirSacar;
+    }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btSacar;
@@ -166,5 +309,6 @@ public class janelaSacar extends javax.swing.JFrame {
     private javax.swing.JLabel lblSaldoSacar;
     private javax.swing.JLabel lblTituloSacar;
     private javax.swing.JTextField txtInserirSacar;
+    private javax.swing.JTextField txtMostrarSaldoSacar;
     // End of variables declaration//GEN-END:variables
 }

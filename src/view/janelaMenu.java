@@ -18,8 +18,10 @@ import javax.swing.JOptionPane;
 public class janelaMenu extends javax.swing.JFrame {
     
     private Controller control;
+ 
     
    public janelaMenu(Controller control) { 
+   
         this.control = control;
         initComponents();
         setupMenu();

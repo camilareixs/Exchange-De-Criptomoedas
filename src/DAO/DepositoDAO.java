@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DepositoDAO {
+    
     private final Conexao conexao;
 
     public DepositoDAO() {
@@ -22,6 +23,7 @@ public class DepositoDAO {
     }
 
     public void depositar(String nome, double valor) throws SQLException {
+        
         String sql = "UPDATE cadastro SET reais = reais + ? WHERE nome = ?";
 
         try (Connection conn = this.conexao.getConnection();
@@ -32,8 +34,9 @@ public class DepositoDAO {
 
             int affectedRows = pstmt.executeUpdate();
             if (affectedRows == 0) {
-                throw new SQLException("Deposito falhou, nenhuma linha afetada.");
+                throw new SQLException("Depósito falhou, nenhuma linha afetada.");
             }
+            System.out.println("Depósito realizado com sucesso.");
         } catch (SQLException e) {
             System.out.println("Erro ao executar SQL para depositar: " + e.getMessage());
             throw e;
@@ -42,6 +45,7 @@ public class DepositoDAO {
 
     public double getSaldoReais(String nome) throws SQLException {
         String sql = "SELECT reais FROM cadastro WHERE nome = ?";
+        System.out.println("Executando SQL: " + sql);
 
         try (Connection conn = this.conexao.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -49,6 +53,7 @@ public class DepositoDAO {
             pstmt.setString(1, nome);
 
             ResultSet rs = pstmt.executeQuery();
+
 
             if (rs.next()) {
                 return rs.getDouble("reais");

@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.sql.SQLException;
-import controller.Controller;
+
 
 
 /**
@@ -20,15 +20,15 @@ import controller.Controller;
 public class janelaDeposito extends javax.swing.JFrame {
     
    private DepositoController control;
-    private String nome;
-
-    public janelaDeposito(String nome) {
-       initComponents();
-       this.nome = nome;
-       this.control = new DepositoController(nome);
-    }
+   private String nome;
     
    
+    public janelaDeposito(String nome) {
+        initComponents();
+        this.nome = nome;
+        this.control = new DepositoController();
+    }
+    
    
         @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -139,18 +139,21 @@ public class janelaDeposito extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairDepositoMouseClicked
 
     private void btDepositarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDepositarMouseClicked
-         try {
-        double valor = Double.parseDouble(txtInserirValor.getText());
-        
-        System.out.println("Nome: " + nome);
-        System.out.println("Valor: " + valor);
-        this.control.depositar(nome, valor);
-        
-        double saldoAtualizado = control.getSaldoReais();
-        txtMostrarSaldo.setText(String.valueOf(saldoAtualizado));
-    } catch (SQLException e) {
-        System.out.println(e.getMessage());
-    }
+       try {
+            double valor = Double.parseDouble(txtInserirValor.getText());
+
+            control.depositar(nome, valor);
+            
+            double saldoAtualizado = control.getSaldoReais(nome);
+            txtMostrarSaldo.setText(String.valueOf(saldoAtualizado));
+            
+        } catch (SQLException e) {
+            System.out.println("Erro de SQL: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Valor inserido inválido: " + txtInserirValor.getText());
+        } catch (Exception e) {
+            System.out.println("Erro inesperado: " + e.getMessage());
+        }
     }//GEN-LAST:event_btDepositarMouseClicked
 
 

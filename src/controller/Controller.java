@@ -4,14 +4,16 @@
  */
 package controller;
 
-import view.janelaLogin;
-import view.janelaSenhaSaldo;
+
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.DriverManager;
 import view.janelaDeposito;
+import view.janelaLogin;
+import view.janelaSenhaSaldo;
+
 
 /**
  *
@@ -21,7 +23,7 @@ import view.janelaDeposito;
 //ARRUMAR PARA MVC 
 
 public class Controller {
-    private Controller control;
+      
     private janelaLogin login;
     private janelaSenhaSaldo saldo;
     private String nome;
@@ -32,28 +34,23 @@ public class Controller {
     private double saldoEthereum;
     private double saldoRipple;
     private janelaDeposito deposito;
+    private Controller control;
+     
 
-
-    public Controller(String nome, String cpf) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.deposito = new janelaDeposito(nome);
-    }
-    
     public boolean senhaCorreta(String senha, Controller control) {
     try {
-        // Obtenha uma conexão com o banco de dados
+        
         Connection conn = DriverManager.getConnection
         ("jdbc:postgresql://localhost:5432/Pessoas",
             "postgres", "fei");
-        // Crie um PreparedStatement para executar uma consulta SQL
+     
         PreparedStatement pstmt = conn.prepareStatement
         ("SELECT senha FROM cadastro WHERE nome = ?");
 
-        // Defina o parâmetro da consulta (o nome do usuário)
+       
         pstmt.setString(1, control.getNome());
 
-        // Execute a consulta
+   
         ResultSet rs = pstmt.executeQuery();
 
         if (rs.next()) {
@@ -64,8 +61,40 @@ public class Controller {
     }
     return false;
 }
-
     
+  
+    public Controller(String nome, String cpf) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.deposito = new janelaDeposito(nome);
+    }
+    
+      
+
+    public Controller getControl() {
+        return control;
+    }
+
+    public void setControl(Controller control) {
+        this.control = control;
+    }
+
+    public janelaLogin getLogin() {
+        return login;
+    }
+
+    public void setLogin(janelaLogin login) {
+        this.login = login;
+    }
+
+    public janelaSenhaSaldo getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(janelaSenhaSaldo saldo) {
+        this.saldo = saldo;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -73,7 +102,23 @@ public class Controller {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
     public double getSaldoReais() {
         return saldoReais;
     }
@@ -106,43 +151,18 @@ public class Controller {
         this.saldoRipple = saldoRipple;
     }
 
+    public janelaDeposito getDeposito() {
+        return deposito;
+    }
+
+    public void setDeposito(janelaDeposito deposito) {
+        this.deposito = deposito;
+    }
     
     
     
     
     
-    public janelaSenhaSaldo getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(janelaSenhaSaldo saldo) {
-        this.saldo = saldo;
-    }
-
     
-    public janelaLogin getLogin() {
-        return login;
-    }
-
-    public void setLogin(janelaLogin login) {
-        this.login = login;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
     
 }

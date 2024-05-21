@@ -4,10 +4,14 @@
  */
 package model;
 
+import controller.Controller;
+
+
 /**
  *
  * @author user
  */
 public class Usuarios {
+    
     
 }

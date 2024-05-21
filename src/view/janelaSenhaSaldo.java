@@ -7,6 +7,7 @@ package view;
 import controller.Controller;
 import java.awt.event.ActionListener;
 
+
 public class janelaSenhaSaldo extends javax.swing.JFrame {
     
     private Controller control;

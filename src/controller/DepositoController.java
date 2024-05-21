@@ -9,9 +9,11 @@ import java.sql.SQLException;
 public class DepositoController {
     private DepositoDAO depositoDAO;
     private String nome;
+    private double valor;
 
-    public DepositoController(String nome) {
+    public DepositoController(String nome, double valor) {
         this.nome = nome;
+        this.valor = 0;
         this.depositoDAO = new DepositoDAO();
     }
     
@@ -23,7 +25,7 @@ public class DepositoController {
         return this.nome;
     }
 
-    public void depositar(String nome, double valor) throws SQLException {                                         
+    public void depositar(String nome, double valor) throws SQLException {
         try {
             depositoDAO.depositar(nome, valor);
         } catch (SQLException e) {
@@ -32,14 +34,23 @@ public class DepositoController {
         }
     }
 
-    public double getSaldoReais() {
+   public double getSaldoReais(String nome) throws SQLException {
         try {
             return depositoDAO.getSaldoReais(nome);
         } catch (SQLException e) {
             System.out.println("Erro ao obter saldo: " + e.getMessage());
+            throw e;
         }
-
-        return 0;
     }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+    
+    
 }
 

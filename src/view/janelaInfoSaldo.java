@@ -37,7 +37,7 @@ public class janelaInfoSaldo extends javax.swing.JFrame {
         txtRippleSaldo.setText("" + control.getSaldoRipple());
     }
     
-    
+    //teste  git
 
     /**
      * This method is called from within the constructor to initialize the form.

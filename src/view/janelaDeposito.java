@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
 import controller.DepositoController;
@@ -14,18 +10,20 @@ import java.sql.SQLException;
 
 
 /**
- *
- * @author user
+ * Nessa janela o usuario consegue fazer o deposito em reais
+ * 
+ * @author Camila Reis
+ * RA 222220378
  */
+
+
 public class janelaDeposito extends javax.swing.JFrame {
     
    private DepositoController control;
    private String nome;
   
    
-    
-   
-    public janelaDeposito(String nome) {
+   public janelaDeposito(String nome) {
         initComponents();
         this.nome = nome;
         this.control = new DepositoController();
@@ -143,7 +141,11 @@ public class janelaDeposito extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairDepositoMouseClicked
 
     private void btDepositarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDepositarMouseClicked
-       try {
+       
+        //Mover para DAO
+        //Conexao com o banco de dados para salvar os valores
+        try {
+            
             double valor = Double.parseDouble(txtInserirValor.getText());
 
             control.depositar(nome, valor);
@@ -155,13 +157,19 @@ public class janelaDeposito extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println("Erro de SQL: " + e.getMessage());
         } catch (NumberFormatException e) {
-            System.out.println("Valor inserido inválido: " + txtInserirValor.getText());
+            System.out.println("Valor inserido inválido: " 
+                                                + txtInserirValor.getText());
         } catch (Exception e) {
             System.out.println("Erro inesperado: " + e.getMessage());
         }
+        
     }//GEN-LAST:event_btDepositarMouseClicked
 
 
+    
+    
+    
+    //Getters e setters
     public DepositoController getControl() {
         return control;
     }
@@ -221,6 +229,10 @@ public class janelaDeposito extends javax.swing.JFrame {
     public JTextField getTxtMostrarSaldo() {
         return txtMostrarSaldo;
     }
+    
+     public void setTxtMostrarSaldo(JTextField txtMostrarSaldo) {
+        this.txtMostrarSaldo = txtMostrarSaldo;
+    } 
 
     /**
      * @param args the command line arguments
@@ -256,9 +268,7 @@ public class janelaDeposito extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-    public void setTxtMostrarSaldo(JTextField txtMostrarSaldo) {
-        this.txtMostrarSaldo = txtMostrarSaldo;
-    }    
+      
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

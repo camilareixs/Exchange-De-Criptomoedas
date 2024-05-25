@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
 import DAO.ComprarDAO;
@@ -14,9 +10,15 @@ import javax.swing.JOptionPane;
 
 
 /**
- *
- * @author user
+ * Nessa janela o usuario realiza a compra de criptomoedas
+ * É possivel vizualizar a cotação atual, escolher qual das tres criptomoedas
+ * deseja comprar, calcular o valor de acordo com a quantidade escolhida 
+ * 
+ * @author Camila Reis
+ * RA 222220378
  */
+
+
 public class janelaComprar extends javax.swing.JFrame {
     
     private Controller control;
@@ -35,54 +37,70 @@ public class janelaComprar extends javax.swing.JFrame {
         botoes();
     }
     
+    //Exibe as cotações
     public void exibirValores(){
         
-     String valores = "Bitcoin: R$ " + String.format("%.2f", modelo.getValorBitcoin()) + "\n"
-                       + "Ethereum: R$ " + String.format("%.2f", modelo.getValorEthereum()) + "\n"
-                       + "Ripple: R$ " + String.format("%.2f", modelo.getValorRipple());
+     String valores = "Bitcoin: R$ " + String.format("%.2f", 
+                                    modelo.getValorBitcoin()) + "\n"
+                       + "Ethereum: R$ " + String.format("%.2f", 
+                                    modelo.getValorEthereum()) + "\n"
+                       + "Ripple: R$ " + String.format("%.2f", 
+                                    modelo.getValorRipple());
         txtAreaCotacao.setText(valores);
         
     }
     
-   
-        public void botoes(){
+       
+       //Metodo para selecionar um botao por vez
+       public void botoes(){
             
        btBit.addItemListener(new ItemListener() {
            
         @Override
+        
         public void itemStateChanged(ItemEvent e) {
+            
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 btEthe.setSelected(false);
                 btRip.setSelected(false);
                 exibirCotacaoComTaxa("Bitcoin");
+                
             }
         }
-        
         });
 
         btEthe.addItemListener(new ItemListener() {
+            
         @Override
+        
         public void itemStateChanged(ItemEvent e) {
+            
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 btBit.setSelected(false);
                 btRip.setSelected(false);
                 exibirCotacaoComTaxa("Ethereum");
+                
             }
         }
          });
 
     btRip.addItemListener(new ItemListener() {
+        
         @Override
+        
         public void itemStateChanged(ItemEvent e) {
+            
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 btBit.setSelected(false);
                 btEthe.setSelected(false);
                 exibirCotacaoComTaxa("Ripple");
+                
             }
         }
         });
        }
         
+       //Exibe o valor da cotação mais a taxa de compra
         private void exibirCotacaoComTaxa(String tipo) {
         double valor = 0;
         double taxa = 0;
@@ -106,10 +124,13 @@ public class janelaComprar extends javax.swing.JFrame {
         String resultado = String.format("%s: R$%.2f"
                 , tipo, valorComTaxa, taxa * 100);
         txtConfiraValor.setText(resultado);
+        
     }
          
-    
+        
+    //Calcula o valor final junto com a taxa, a quantidade e a cotação
     private void calcularValorFinal() {
+        
         String tipo = "";
 
         if (btBit.isSelected()) {
@@ -149,7 +170,9 @@ public class janelaComprar extends javax.swing.JFrame {
         }
     }     
     
+     //Metodo para fazer a conexao com o bd para salvar os valores
      private void realizarCompra() throws SQLException {
+         
         String tipo = "";
 
         if (btBit.isSelected()) {
@@ -161,34 +184,35 @@ public class janelaComprar extends javax.swing.JFrame {
         }
 
         if (!tipo.isEmpty()) {
+            
             try {
-                String valorStr = txtConfiraValor.getText().replace("R$", "").replace(",", ".");
+                
+                String valorStr = 
+                    txtConfiraValor.getText().replace("R$", "").replace(",", ".");
                 double valorFinal = Double.parseDouble(valorStr);
 
                 dao.comprar(tipo, valorFinal); 
 
                 JOptionPane.showMessageDialog(null, "Compra realizada com sucesso!",
                         "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(null, "Formato de valor inválido. Use o formato correto, por exemplo: R$100,00", 
+                JOptionPane.showMessageDialog(null, "Formato de valor inválido."
+                        + "Use o formato correto, por exemplo: R$100,00", 
                         "Erro", JOptionPane.ERROR_MESSAGE);
+                
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Erro ao realizar compra: " + ex.getMessage(), 
-                        "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Erro ao realizar compra: " 
+                         + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
+            
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione uma moeda antes de calcular.", 
-                    "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Selecione uma moeda antes de "
+                             + "calcular.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
 
-
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

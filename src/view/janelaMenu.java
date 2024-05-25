@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
 import controller.Controller;
@@ -12,15 +8,18 @@ import model.Cotacao;
 
 
 /**
- *
- * @author user
+ * Nessa tela o usuario vizaliza o menu e escolhe a opção desejada
+ * 
+ * @author Camila Reis
+ * RA 222220378
  */
+
+
 public class janelaMenu extends javax.swing.JFrame {
     
     private Controller control;
     private Cotacao modelo;
  
-    
    public janelaMenu(Controller control) { 
    
         this.control = control;
@@ -32,7 +31,7 @@ public class janelaMenu extends javax.swing.JFrame {
     }
    
 
-    
+    //Imprime o manu
      private void setupMenu() {
         String menu = "1. Consultar saldo\n"
                     + "2. Consultar extrato\n"
@@ -45,7 +44,8 @@ public class janelaMenu extends javax.swing.JFrame {
         txtExibirMenu.setText(menu);
         txtExibirMenu.setEditable(false);
     }
-     
+    
+     //condições do menu
     private void setupActionListeners() {
     btEscolherOp.addActionListener(new ActionListener() {
         @Override
@@ -55,12 +55,14 @@ public class janelaMenu extends javax.swing.JFrame {
 
             switch (opcao) {
                 case "1":
-                    janelaSenhaSaldo senhaSaldo = new janelaSenhaSaldo(control, opcao);
+                    janelaSenhaSaldo senhaSaldo = new janelaSenhaSaldo
+                                                      (control, opcao);
                     senhaSaldo.setVisible(true);
                     break;
 
                 case "2":
-                    janelaSenhaSaldo extrato = new janelaSenhaSaldo(control, opcao);
+                    janelaSenhaSaldo extrato = new janelaSenhaSaldo
+                                                   (control, opcao);
                     extrato.setVisible(true);
                     break;
 
@@ -77,13 +79,15 @@ public class janelaMenu extends javax.swing.JFrame {
                     break;
                     
                 case "5":
-                    janelaSenhaSaldo comprar = new janelaSenhaSaldo(control, opcao);
+                    janelaSenhaSaldo comprar = new janelaSenhaSaldo
+                                                   (control, opcao);
                     comprar.setVisible(true);
                     break;
                     
                      
                 case "6":
-                    janelaSenhaSaldo vend = new janelaSenhaSaldo(control, opcao);
+                    janelaSenhaSaldo vend = new janelaSenhaSaldo
+                                                (control, opcao);
                     vend.setVisible(true);
                         break;  
                         
@@ -95,11 +99,13 @@ public class janelaMenu extends javax.swing.JFrame {
                         
                    
                     case "8":
-                        // Abra a tela "Sair"
+                        // Sair
                         break;
                     default:
-                        JOptionPane.showMessageDialog(null, "Por favor, insira uma opção válida.");
+                        JOptionPane.showMessageDialog(null, "Por favor, "
+                                             + "insira uma opção válida.");
                         break;
+                        
                 }
             }
         });

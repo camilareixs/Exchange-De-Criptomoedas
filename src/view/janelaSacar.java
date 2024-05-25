@@ -1,10 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
-
-
 import controller.SacarController;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -12,10 +6,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.sql.SQLException;
 
+
 /**
- *
- * @author user
+ * Nessa tela o usuario pode sacar algum valor
+ * 
+ * @author Camila Reis
+ * RA 222220378
  */
+
+
 public class janelaSacar extends javax.swing.JFrame {
 
     private SacarController control;
@@ -142,7 +141,9 @@ public class janelaSacar extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairSacarMouseClicked
 
     private void btSacarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSacarMouseClicked
-         try {
+         
+        //DAO
+        try {
             double valor = Double.parseDouble(txtInserirSacar.getText());
 
             control.sacar(nome, valor);
@@ -201,6 +202,9 @@ public class janelaSacar extends javax.swing.JFrame {
 //            }
 //        });
     
+    
+    
+    //Getters e setters
     public void setTxtMostrarSaldoSacar(JTextField txtMostrarSaldoSacar) {
         this.txtMostrarSaldoSacar = txtMostrarSaldoSacar;
     }

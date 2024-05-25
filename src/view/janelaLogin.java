@@ -1,14 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
 import DAO.Conexao;
 import controller.Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.sql.SQLException;
 import java.sql.Connection;
@@ -17,44 +12,50 @@ import java.sql.ResultSet;
 
 
 /**
- *
- * @author user
+ * O usuario faz o login nessa tela
+ * 
+ * @author Camila Reis
+ * RA 222220378
  */
-
-//ARRUMAR PARA MVC 
 
 
 public class janelaLogin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form janelaLogin
-     */
     public janelaLogin(String nome, String cpf) {
+        
         initComponents();
         control = new Controller(nome, cpf); 
         setupActionListeners();
+        
     }
     
-    
+    //Action para o botao entrar conferir se está tudo correto e se existe no bd
     private void setupActionListeners() {
+        
     btEntrar.addActionListener(new ActionListener() {
+        
             @Override
+            
             public void actionPerformed(ActionEvent e) {
                 
                 String nome = txtNome.getText();
                 String senha = String.valueOf(txtSenha.getText());
 
                 if (nome.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Por favor, insira um nome válido.");
+                    JOptionPane.showMessageDialog(null, 
+                                           "Por favor, insira um nome válido.");
                     return;
                 }
 
                 if (!senha.matches("\\d{6}")) {
-                    JOptionPane.showMessageDialog(null, "Por favor, insira uma senha numérica de 6 dígitos.");
+                    JOptionPane.showMessageDialog(null, 
+                          "Por favor, insira uma senha numérica de 6 dígitos.");
                     return;
                 }
 
+                //DAO
                 try {
+                    
                     Conexao conexao = new Conexao();
                     Connection connection = conexao.getConnection();
 
@@ -66,22 +67,28 @@ public class janelaLogin extends javax.swing.JFrame {
                     ResultSet resultSet = statement.executeQuery();
 
                     if (resultSet.next()) {
+                        
                         // Usuário autenticado com sucesso
                         control.setNome(nome);
                         control.setCpf(resultSet.getString("cpf"));
                        janelaMenu menu = new janelaMenu(control);
                         menu.setVisible(true);
+                        
                     } else {
                         // Usuário não encontrado
-                        JOptionPane.showMessageDialog(null, "Nome ou senha inválidos.");
+                        JOptionPane.showMessageDialog(null, "Nome ou senha "
+                                                                + "inválidos.");
                     }
 
                     resultSet.close();
                     statement.close();
                     connection.close();
+                    
                 } catch (SQLException ex) {
                     ex.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "Erro ao conectar com o banco de dados.");
+                    JOptionPane.showMessageDialog(null, "Erro ao conectar com "
+                                                        + "o banco de dados.");
+                    
                 }
             }
         });

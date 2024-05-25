@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller;
 
 
@@ -20,16 +16,27 @@ import view.janelaVender;
 
 
 /**
- *
- * @author user
+ * Classe responsável por controlar as operações principais da aplicação.
+ * Esta classe atua como o controlador principal da aplicação, gerenciando as 
+ * interações entre as views (interfaces gráficas) e os DAOs (objetos de acesso 
+ * a dados). Ela lida com a lógica de negócio e coordena as operações de compra,
+ * venda e consulta de saldos.
+ * 
+ * @author Camila Reis
+ * RA 222220378
  */
 
-//ARRUMAR PARA MVC 
 
 public class Controller {
       
+    // Declaração dos atributos das views
     private janelaLogin login;
     private janelaSenhaSaldo saldo;
+    private janelaDeposito deposito;
+    private janelaComprar comprar;
+    private janelaVender vender;
+    
+    // Declaração dos atributos de dados do usuário
     private String nome;
     private String cpf;
     private String senha;
@@ -37,15 +44,15 @@ public class Controller {
     private double saldoBitcoin;
     private double saldoEthereum;
     private double saldoRipple;
-    private janelaDeposito deposito;
-    private janelaComprar comprar;
-    private Controller control;
+    
+    // Declaração dos atributos para manipulação de dados
     private ComprarDAO dao;
-    private janelaVender vender;
     private VenderDAO vao;
 
+    private Controller control;
     
     
+    // Construtor que inicializa os atributos do controlador
     public Controller(String nome, String cpf) {
         this.dao = new ComprarDAO(this);
         this.vao = new VenderDAO(this);
@@ -56,7 +63,8 @@ public class Controller {
         this.comprar = new janelaComprar(this);
     }
      
-
+    
+    //Método para verificar se a senha fornecida está correta.
     public boolean senhaCorreta(String senha, Controller control) {
         
     try {
@@ -77,15 +85,16 @@ public class Controller {
         if (rs.next()) {
             String senhaCorreta = rs.getString("senha");
             return senha.equals(senhaCorreta);
+            
         }
     } catch (SQLException e) {
     }
     return false;
 }
     
-  
     
-
+    // Getters e setters para os atributos
+    
     public janelaComprar getComprar() {
         return comprar;
     }
@@ -94,9 +103,6 @@ public class Controller {
         this.comprar = comprar;
     }
     
-    
-      
-
     public Controller getControl() {
         return control;
     }

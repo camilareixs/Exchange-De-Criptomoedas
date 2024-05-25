@@ -1,14 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAO;
 
-
 /**
- *
- * @author user
+ * Classe responsável por realizar operações de compra e atualização de 
+ * saldo no banco de dados.
+ * Esta classe fornece métodos para comprar criptomoedas, atualizar saldos 
+ * de reais e criptomoedas na tabela 'cadastro' do banco de dados. 
+ * Também utiliza objetos das classes Controller e ComprarController para 
+ * obter informações do usuário e calcular valores de compra, respectivamente.
+ * 
+ * @author Camila Reis
+ * RA 222220378
  */
+
+
+// Importações necessárias
 import controller.ComprarController;
 import controller.Controller;
 import java.sql.Connection;
@@ -16,43 +21,39 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 public class ComprarDAO {
 
+    //objetos
     private Conexao conexao;
     private ComprarController comp;
     private Controller control;
     
-  
-    public ComprarDAO(){
+    //construtores
+    public ComprarDAO(){}
     
-    }
-    
-
-   public ComprarDAO(Controller control) {
+    public ComprarDAO(Controller control) {
         this.conexao = new Conexao();
         this.control = control;
     }
-
-   public void comprar(String tipo, double valorFinal) throws SQLException {
+    
+    // Método para realizar uma compra de criptomoeda
+    public void comprar(String tipo, double valorFinal) throws SQLException {
        
+       // Obtém o nome do usuário logado a partir do objeto Controller
        String nome = control.getNome();
-       
-       System.out.println("Nome do usuário: " + nome); 
-       
-       
-        String sql = "SELECT reais FROM cadastro WHERE nome = ?";
+
+       String sql = "SELECT reais FROM cadastro WHERE nome = ?";
         
         try (Connection conn = conexao.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             
             pstmt.setString(1, nome);
-            
             ResultSet rs = pstmt.executeQuery();
             
             if (rs.next()) {
                 
                 double saldoReais = rs.getDouble("reais");
-
                 double valorTotalCompra = valorFinal; 
 
                 if (saldoReais >= valorTotalCompra) {
@@ -60,17 +61,16 @@ public class ComprarDAO {
                    sql = "UPDATE cadastro SET reais = reais - ? WHERE nome = ?";
                     
                     try (PreparedStatement updateStmt = conn.prepareStatement(sql)) {
-                        
                         updateStmt.setDouble(1, valorTotalCompra);
                         updateStmt.setString(2, nome);
                         updateStmt.executeUpdate();
                     }
 
                    
-                    sql = "UPDATE cadastro SET " + tipo.toLowerCase() 
-                            + " = " + tipo.toLowerCase() + " + ? WHERE nome = ?";
+                    sql = "UPDATE cadastro SET " + tipo.toLowerCase() + " = " 
+                                + tipo.toLowerCase() + " + ? WHERE nome = ?";
+                    
                     try (PreparedStatement updateStmt = conn.prepareStatement(sql)) {
-                        
                         updateStmt.setDouble(1, valorTotalCompra);
                         updateStmt.setString(2, nome);
                         updateStmt.executeUpdate();
@@ -84,6 +84,8 @@ public class ComprarDAO {
         }
     }
    
+    
+    // Método para obter o saldo de reais do usuário
     public double obterSaldoReais() throws SQLException {
         
         String nome = control.getNome();
@@ -103,7 +105,8 @@ public class ComprarDAO {
         }
         return 0;
     }
-
+    
+    // Método para atualizar o saldo de reais do usuário
     public void atualizarSaldoReais(double novoSaldo) throws SQLException {
         
         String nome = control.getNome();
@@ -119,8 +122,11 @@ public class ComprarDAO {
             
         }
     }
-
-    public void atualizarSaldoCriptomoeda(String criptomoeda, double valor) throws SQLException {
+    
+    
+     // Método para atualizar o saldo da criptomoeda do usuário
+    public void atualizarSaldoCriptomoeda(String criptomoeda, double valor) 
+                                                      throws SQLException {
         
         String nome = control.getNome();
         
@@ -128,12 +134,16 @@ public class ComprarDAO {
         
         try (Connection conn = conexao.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
             pstmt.setDouble(1, valor);
             pstmt.setString(2, nome);
             pstmt.executeUpdate();
+            
         }
     }
 
+    
+    // Método para obter o saldo da criptomoeda do usuário
     public double obterSaldoCriptomoeda(String criptomoeda) throws SQLException {
         
         String nome = control.getNome();
@@ -148,17 +158,21 @@ public class ComprarDAO {
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
                     return rs.getDouble(criptomoeda);
+                    
                 }
             }
         }
         return 0;
     }
     
-   public void realizarCompra(String tipo, double valorTotalCompra) throws SQLException {
+    
+   //Método para realizar a compra de criptomoedas
+   public void realizarCompra(String tipo, double valorTotalCompra) 
+                                              throws SQLException {
        
-       String nome = control.getNome();
+        String nome = control.getNome();
        
-       System.out.println("Nome do usuário: " + nome); 
+        System.out.println("Nome do usuário: " + nome); 
        
         try (Connection conn = conexao.getConnection()) {
         

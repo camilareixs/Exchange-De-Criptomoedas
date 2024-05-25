@@ -10,6 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import java.sql.SQLException;
+import java.awt.event.ItemListener;
+import model.Cotacao;
+import java.awt.event.ItemEvent;
 
 
 /**
@@ -20,24 +23,130 @@ public class janelaVender extends javax.swing.JFrame {
 
     private Controller control;
     private VenderDAO vao;
+    private Cotacao modelo;
+    private String nome;
             
    public janelaVender(Controller control) {
         this.control = control;
+        modelo = new Cotacao(); 
+        this.control = control;
+        this.vao = new VenderDAO(control);
+        this.nome = control.getNome();
         initComponents();
+        exibirValores();
     }
-
-   private void VenderBotao(){
-     btVender.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    realizarVenda();
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Erro ao realizar venda: " + ex.getMessage());
-                }
+   
+   public void exibirValores(){
+        
+     String valores = "Bitcoin: R$ " + String.format("%.2f", modelo.getValorBitcoin()) + "\n"
+                       + "Ethereum: R$ " + String.format("%.2f", modelo.getValorEthereum()) + "\n"
+                       + "Ripple: R$ " + String.format("%.2f", modelo.getValorRipple());
+        txtAreaCotacao.setText(valores);
+        
+    }
+   
+   public void botoes(){
+            
+       btBit.addItemListener(new ItemListener() {
+           
+        @Override
+        public void itemStateChanged(ItemEvent e) {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                btEthe.setSelected(false);
+                btRip.setSelected(false);
+                exibirCotacaoComTaxa("Bitcoin");
             }
-        });}
-    
+        }
+        
+        });
+
+        btEthe.addItemListener(new ItemListener() {
+        @Override
+        public void itemStateChanged(ItemEvent e) {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                btBit.setSelected(false);
+                btRip.setSelected(false);
+                exibirCotacaoComTaxa("Ethereum");
+            }
+        }
+         });
+
+    btRip.addItemListener(new ItemListener() {
+        @Override
+        public void itemStateChanged(ItemEvent e) {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                btBit.setSelected(false);
+                btEthe.setSelected(false);
+                exibirCotacaoComTaxa("Ripple");
+            }
+        }
+        });
+       }
+   
+   private void exibirCotacaoComTaxa(String tipo) {
+        double valor = 0;
+        double taxa = 0;
+
+        switch (tipo) {
+            case "Bitcoin":
+                valor = modelo.getValorBitcoin();
+                taxa = 0.03; 
+                break;
+            case "Ethereum":
+                valor = modelo.getValorEthereum();
+                taxa = 0.02; 
+                break;
+            case "Ripple":
+                valor = modelo.getValorRipple();
+                taxa = 0.01; 
+                break;
+        }
+
+        double valorComTaxa = valor * (1 + taxa);
+        String resultado = String.format("%s: R$%.2f"
+                , tipo, valorComTaxa, taxa * 100);
+        txtConfiraValor.setText(resultado);
+    }
+   
+   private void calcularValorFinal() {
+        String tipo = "";
+
+        if (btBit.isSelected()) {
+            tipo = "Bitcoin";
+        } else if (btEthe.isSelected()) {
+            tipo = "Ethereum";
+        } else if (btRip.isSelected()) {
+            tipo = "Ripple";
+        }
+
+        if (!tipo.isEmpty()) {
+            double valorInserido = Double.parseDouble(txtQnt.getText());
+            double valor = 0;
+            double taxa = 0;
+
+            switch (tipo) {
+                case "Bitcoin":
+                    valor = modelo.getValorBitcoin();
+                    taxa = 0.03; // 3% de taxa
+                    break;
+                case "Ethereum":
+                    valor = modelo.getValorEthereum();
+                    taxa = 0.02; // 2% de taxa
+                    break;
+                case "Ripple":
+                    valor = modelo.getValorRipple();
+                    taxa = 0.01; // 1% de taxa
+                    break;
+            }
+
+            double valorFinal = (valor * valorInserido) * (1 + taxa);
+            txtConfiraValor.setText(String.format("%.2f", + valorFinal));
+            
+        } else {
+            txtConfiraValor.setText("Selecione uma moeda antes de calcular.");
+
+        }
+    }     
 
     private void realizarVenda() throws SQLException {
         String tipo = "";
@@ -249,11 +358,16 @@ public class janelaVender extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairSacarActionPerformed
 
     private void btCalcularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btCalcularMouseClicked
-        
+         calcularValorFinal();
     }//GEN-LAST:event_btCalcularMouseClicked
 
     private void btVenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btVenderMouseClicked
-       
+       try {
+            realizarVenda();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            txtConfiraValor.setText("Erro ao realizar a venda: " + ex.getMessage());
+        }
     }//GEN-LAST:event_btVenderMouseClicked
 
     /**

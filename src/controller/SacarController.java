@@ -1,15 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller;
 import DAO.SacarDAO;
 import java.sql.SQLException;
 
 /**
- *
- * @author user
+ * Classe responsável por controlar as operações de saque.
+ * Esta classe atua como o controlador que coordena as interações entre o 
+ * modelo de saque (SacarDAO) e a visão correspondente. Ela lida com a 
+ * lógica de saques e consulta de saldo.
+ * 
+ * @author Camila Reis
+ * RA 222220378
  */
+
+
 public class SacarController {
     
     private SacarDAO sacarDAO;
@@ -26,10 +29,8 @@ public class SacarController {
          this.sacarDAO = new SacarDAO();
     }
     
-    public String getNome() {
-        return this.nome;
-    }
     
+    //Metodo para realizar o saque
     public void sacar(String nome, double valor) throws SQLException {
         try {
             sacarDAO.sacar(nome, valor);
@@ -39,15 +40,26 @@ public class SacarController {
         }
     }
 
+    
+   //Metodo para pegar o saldo em reais
    public double getSaldoReais(String nome) throws SQLException {
+       
         try {
+            
             return sacarDAO.getSaldoReais(nome);
+            
         } catch (SQLException e) {
             System.out.println("Erro ao obter saldo: " + e.getMessage());
             throw e;
         }
     }
-
+   
+   
+   //Getters e setters
+   public String getNome() {
+        return this.nome;
+    }
+   
     public double getValor() {
         return valor;
     }

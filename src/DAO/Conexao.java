@@ -1,23 +1,28 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAO;
+
+//Importações necessárias
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
+ * Classe responsável por estabelecer a conexão com o banco de dados.
  *
- * @author user
+ * @author Camila Reis
+ * RA 222220378
  */
 public class Conexao {
     
     public Connection getConnection() throws SQLException{
-        try { return DriverManager.getConnection(
+        
+        try { 
+            
+            return DriverManager.getConnection(
                 "jdbc:postgresql://localhost:5432/Pessoas", "postgres", "fei");
+            
         } catch (SQLException e) {
-            System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
+            System.out.println("Erro ao conectar ao banco de dados: " 
+                                                   + e.getMessage());
             throw e;
         }
     }

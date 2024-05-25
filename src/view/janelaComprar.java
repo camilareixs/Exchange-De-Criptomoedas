@@ -83,7 +83,7 @@ public class janelaComprar extends javax.swing.JFrame {
         });
        }
         
-         private void exibirCotacaoComTaxa(String tipo) {
+        private void exibirCotacaoComTaxa(String tipo) {
         double valor = 0;
         double taxa = 0;
 

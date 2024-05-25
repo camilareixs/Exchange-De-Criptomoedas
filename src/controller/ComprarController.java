@@ -1,17 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller;
-
 import DAO.ComprarDAO;
 import model.Cotacao;
-import java.sql.SQLException;
 
 /**
- *
- * @author user
+ * Classe responsável por controlar as operações de compra de criptomoedas.
+ * Esta classe fornece métodos para calcular o valor final de uma compra de
+ * criptomoedas com base no tipo de criptomoeda, valor inserido e taxas
+ * aplicáveis. 
+ * 
+ * @author Camila Reis
+ * RA 222220378
  */
+
 public class ComprarController {
 
     private ComprarDAO dao;
@@ -20,13 +20,16 @@ public class ComprarController {
 
     public ComprarController(ComprarDAO dao, Cotacao modelo) {
         this.modelo = modelo;
-        this.dao = new ComprarDAO();
+        this.dao = new ComprarDAO(); //Inicializa um novo objeto comprarDAO
     }
 
+    
+     // Método para calcular o valor final de uma compra de criptomoeda
     public double calcularValorFinal(String tipo, double valorInserido) {
         double valor = 0;
         double taxa = 0;
-
+        
+        // Determina o valor da criptomoeda e a taxa com base no tipo
         switch (tipo) {
             case "Bitcoin":
                 valor = modelo.getValorBitcoin();
@@ -42,6 +45,7 @@ public class ComprarController {
                 break;
         }
 
+        // Calcula e retorna o valor final da compra
         return (valor * valorInserido) * (1 + taxa);
     }
 

@@ -18,26 +18,18 @@ public class janelaInfoSaldo extends javax.swing.JFrame {
     public janelaInfoSaldo(Controller control) {
         this.control = control;
         initComponents();
-        txtNomeSaldo.setEditable(false);
-        txtCpfSaldo.setEditable(false);
-        txtReaisSaldo.setEditable(false);
-        txtBitcoinSaldo.setEditable(false);
-        txtEthereumSaldo.setEditable(false);
-        txtRippleSaldo.setEditable(false);
         atualizarInfo(); 
     }
     
     public void atualizarInfo() {
         txtNomeSaldo.setText("" + control.getNome());
         txtCpfSaldo.setText("" + control.getCpf());
-        double saldoAtualizado = control.getSaldoReais();
-        txtReaisSaldo.setText(String.valueOf(saldoAtualizado));
+        txtReaisSaldo.setText("" + control.getSaldoReais());
         txtBitcoinSaldo.setText("" + control.getSaldoBitcoin());
         txtEthereumSaldo.setText("" + control.getSaldoEthereum());
         txtRippleSaldo.setText("" + control.getSaldoRipple());
     }
     
-    //teste  git
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,17 +66,34 @@ public class janelaInfoSaldo extends javax.swing.JFrame {
         lblNomeSaldo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblNomeSaldo.setText("Nome:");
 
+        txtNomeSaldo.setEditable(false);
+
         lblCpfSaldo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblCpfSaldo.setText("CPF:");
+
+        txtCpfSaldo.setEditable(false);
+
+        txtReaisSaldo.setEditable(false);
+        txtReaisSaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtReaisSaldoActionPerformed(evt);
+            }
+        });
 
         lblReaisSaldo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblReaisSaldo.setText("Reais:");
 
+        txtBitcoinSaldo.setEditable(false);
+
         lblBitcoinSaldo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblBitcoinSaldo.setText("Bitcoin:");
 
+        txtEthereumSaldo.setEditable(false);
+
         lblEthereumSaldo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblEthereumSaldo.setText("Ethereum:");
+
+        txtRippleSaldo.setEditable(false);
 
         lblRippleSaldo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblRippleSaldo.setText("Ripple:");
@@ -192,9 +201,7 @@ public class janelaInfoSaldo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSairSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairSaldoActionPerformed
-        janelaMenu menu = new janelaMenu(control);
-
-        menu.setVisible(true);
+       
     }//GEN-LAST:event_btSairSaldoActionPerformed
 
     private void btSairSaldoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSairSaldoMouseClicked
@@ -203,6 +210,10 @@ public class janelaInfoSaldo extends javax.swing.JFrame {
         menu.setVisible(true);
                
     }//GEN-LAST:event_btSairSaldoMouseClicked
+
+    private void txtReaisSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReaisSaldoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtReaisSaldoActionPerformed
 
     /**
      * @param args the command line arguments

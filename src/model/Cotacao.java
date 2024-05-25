@@ -10,7 +10,7 @@ import java.util.Random;
  */
 public class Cotacao {
    
-    private double valorBitcoin = 1746;
+    private double valorBitcoin = 5746;
     private double valorEthereum = 3161;
     private double valorRipple = 62;
     

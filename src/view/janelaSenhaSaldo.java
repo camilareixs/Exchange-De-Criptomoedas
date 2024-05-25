@@ -4,6 +4,8 @@
  */
 package view;
 
+import DAO.ComprarDAO;
+import controller.ComprarController;
 import controller.Controller;
 import java.awt.event.ActionListener;
 
@@ -12,9 +14,16 @@ public class janelaSenhaSaldo extends javax.swing.JFrame {
     
     private Controller control;
     private String opcao;
+    private String nome;
+    private ComprarDAO dao;
+   
+    public janelaSenhaSaldo(ComprarDAO dao){
+        this.dao = dao;
+    }
 
    public janelaSenhaSaldo(Controller control, String opcao) { 
         initComponents();
+        
         this.control = control;
         this.opcao = opcao;
     }
@@ -152,7 +161,17 @@ public class janelaSenhaSaldo extends javax.swing.JFrame {
             case "2":
                 janelaExtrato extrato = new janelaExtrato();
                 extrato.setVisible(true);
-                break;}
+                break;
+            case "5":
+                janelaComprar compr = new janelaComprar(control);
+                compr.setVisible(true);
+                break;
+            case "6":
+                janelaVender vend = new janelaVender(control);
+                vend.setVisible(true);
+                break;   
+   
+    }
 }
     }//GEN-LAST:event_btEntrarSaldoMouseClicked
 

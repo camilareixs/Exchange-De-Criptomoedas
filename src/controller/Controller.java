@@ -5,14 +5,18 @@
 package controller;
 
 
+import DAO.ComprarDAO;
+import DAO.VenderDAO;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.DriverManager;
+import view.janelaComprar;
 import view.janelaDeposito;
 import view.janelaLogin;
 import view.janelaSenhaSaldo;
+import view.janelaVender;
 
 
 /**
@@ -34,10 +38,27 @@ public class Controller {
     private double saldoEthereum;
     private double saldoRipple;
     private janelaDeposito deposito;
+    private janelaComprar comprar;
     private Controller control;
+    private ComprarDAO dao;
+    private janelaVender vender;
+    private VenderDAO vao;
+
+    
+    
+    public Controller(String nome, String cpf) {
+        this.dao = new ComprarDAO(this);
+        this.vao = new VenderDAO(this);
+        this.nome = nome;
+        this.cpf = cpf;
+        this.deposito = new janelaDeposito(nome);
+        this.vender = new janelaVender(this);
+        this.comprar = new janelaComprar(this);
+    }
      
 
     public boolean senhaCorreta(String senha, Controller control) {
+        
     try {
         
         Connection conn = DriverManager.getConnection
@@ -63,11 +84,16 @@ public class Controller {
 }
     
   
-    public Controller(String nome, String cpf) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.deposito = new janelaDeposito(nome);
+    
+
+    public janelaComprar getComprar() {
+        return comprar;
     }
+
+    public void setComprar(janelaComprar comprar) {
+        this.comprar = comprar;
+    }
+    
     
       
 

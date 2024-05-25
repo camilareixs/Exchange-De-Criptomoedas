@@ -4,8 +4,6 @@
  */
 package view;
 
-
-
 import controller.Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,8 +30,7 @@ public class janelaMenu extends javax.swing.JFrame {
         setupActionListeners();
         
     }
-
-    
+   
 
     
      private void setupMenu() {
@@ -85,8 +82,9 @@ public class janelaMenu extends javax.swing.JFrame {
                     break;
                     
                      
-                     case "6":
-                    
+                case "6":
+                    janelaSenhaSaldo vend = new janelaSenhaSaldo(control, opcao);
+                    vend.setVisible(true);
                         break;  
                         
                 case "7":
@@ -108,18 +106,7 @@ public class janelaMenu extends javax.swing.JFrame {
     }
 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     /**
      * This method is called from within the constructor to initialize the form.

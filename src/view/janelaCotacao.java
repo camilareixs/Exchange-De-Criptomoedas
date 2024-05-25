@@ -6,6 +6,7 @@ package view;
 
 import controller.CotacaoController;
 import model.Cotacao;
+import controller.Controller;
 
 
 /**
@@ -15,6 +16,7 @@ import model.Cotacao;
 public class janelaCotacao extends javax.swing.JFrame {
     
     private Cotacao modelo;
+    private Controller control;
 
     public janelaCotacao(Cotacao modelo) {
         this.modelo = modelo;
@@ -147,7 +149,8 @@ public class janelaCotacao extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairCotacaoMouseClicked
 
     private void btSairCotacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairCotacaoActionPerformed
-        // TODO add your handling code here:
+        janelaMenu menu = new janelaMenu(control);
+        menu.setVisible(true);
     }//GEN-LAST:event_btSairCotacaoActionPerformed
 
     /**

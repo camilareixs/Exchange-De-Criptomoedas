@@ -153,6 +153,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNomeSaldo">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCpfSaldo">
           <Properties>
@@ -163,8 +166,17 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCpfSaldo">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtReaisSaldo">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtReaisSaldoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblReaisSaldo">
           <Properties>
@@ -175,6 +187,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtBitcoinSaldo">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblBitcoinSaldo">
           <Properties>
@@ -185,6 +200,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtEthereumSaldo">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblEthereumSaldo">
           <Properties>
@@ -195,6 +213,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtRippleSaldo">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblRippleSaldo">
           <Properties>

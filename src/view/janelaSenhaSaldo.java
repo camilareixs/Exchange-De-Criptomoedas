@@ -1,13 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
-
 import DAO.ComprarDAO;
-import controller.ComprarController;
 import controller.Controller;
-import java.awt.event.ActionListener;
+
+/**
+ * Nessa janela o usuario insere sua respectiva senha e se estiver correta vai
+ * para a tela escolhida no menu
+ * 
+ * @author Camila Reis
+ * RA 222220378
+ */
 
 
 public class janelaSenhaSaldo extends javax.swing.JFrame {
@@ -22,27 +23,25 @@ public class janelaSenhaSaldo extends javax.swing.JFrame {
     }
 
    public janelaSenhaSaldo(Controller control, String opcao) { 
+       
         initComponents();
-        
         this.control = control;
         this.opcao = opcao;
+        
     }
     
-    
-    
    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        txtSenhaSaldo = new javax.swing.JTextField();
         btEntrarSaldo = new javax.swing.JButton();
         lblTituloSenhaSaldo = new javax.swing.JLabel();
         lblInsiraSenha = new javax.swing.JLabel();
         btSairSenha = new javax.swing.JButton();
+        txtSenhaSaldo = new javax.swing.JPasswordField();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -57,7 +56,7 @@ public class janelaSenhaSaldo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel2.setBackground(new java.awt.Color(102, 0, 102));
 
         btEntrarSaldo.setText("OK");
         btEntrarSaldo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -67,12 +66,15 @@ public class janelaSenhaSaldo extends javax.swing.JFrame {
         });
 
         lblTituloSenhaSaldo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTituloSenhaSaldo.setForeground(new java.awt.Color(255, 255, 255));
         lblTituloSenhaSaldo.setText("INSIRA SUA SENHA DE 6 DIGITOS");
 
+        lblInsiraSenha.setForeground(new java.awt.Color(255, 255, 255));
         lblInsiraSenha.setText("Insira a sua senha de 6 digítos:");
 
-        btSairSenha.setBackground(new java.awt.Color(255, 102, 0));
+        btSairSenha.setBackground(new java.awt.Color(204, 153, 255));
         btSairSenha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btSairSenha.setForeground(new java.awt.Color(255, 255, 255));
         btSairSenha.setText("X");
         btSairSenha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -91,6 +93,9 @@ public class janelaSenhaSaldo extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblTituloSenhaSaldo))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -98,13 +103,11 @@ public class janelaSenhaSaldo extends javax.swing.JFrame {
                                 .addComponent(btEntrarSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(102, 102, 102)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblInsiraSenha)
-                                    .addComponent(txtSenhaSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 47, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblTituloSenhaSaldo)))
+                                .addComponent(lblInsiraSenha))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(102, 102, 102)
+                                .addComponent(txtSenhaSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 36, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(btSairSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -119,8 +122,8 @@ public class janelaSenhaSaldo extends javax.swing.JFrame {
                 .addGap(62, 62, 62)
                 .addComponent(lblInsiraSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSenhaSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addComponent(txtSenhaSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(btEntrarSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(103, Short.MAX_VALUE))
         );
@@ -140,17 +143,19 @@ public class janelaSenhaSaldo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSairSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairSenhaActionPerformed
-        // TODO add your handling code here:
+         janelaMenu menu = new janelaMenu(control);
+        menu.setVisible(true);
     }//GEN-LAST:event_btSairSenhaActionPerformed
 
     private void btSairSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSairSenhaMouseClicked
        janelaMenu menu = new janelaMenu(control);
-
-        menu.setVisible(true);
+       menu.setVisible(true);
     }//GEN-LAST:event_btSairSenhaMouseClicked
 
     private void btEntrarSaldoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btEntrarSaldoMouseClicked
-         String senha = txtSenhaSaldo.getText(); 
+     
+    //Ta conferindo qual opção inserida no menu
+    String senha = txtSenhaSaldo.getText(); 
     if (control.senhaCorreta(senha, control)) {
   
     switch (opcao) {
@@ -218,7 +223,7 @@ public class janelaSenhaSaldo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblInsiraSenha;
     private javax.swing.JLabel lblTituloSenhaSaldo;
-    private javax.swing.JTextField txtSenhaSaldo;
+    private javax.swing.JPasswordField txtSenhaSaldo;
     // End of variables declaration//GEN-END:variables
 }
 

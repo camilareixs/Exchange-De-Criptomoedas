@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
 import DAO.VenderDAO;
 import controller.Controller;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import java.sql.SQLException;
 import java.awt.event.ItemListener;
@@ -16,9 +10,13 @@ import java.awt.event.ItemEvent;
 
 
 /**
- *
- * @author user
+ * Janela para o usuario vender alguma moeda
+ * 
+ * @author Camila Reis
+ * RA 222220378
  */
+
+
 public class janelaVender extends javax.swing.JFrame {
 
     private Controller control;
@@ -27,6 +25,7 @@ public class janelaVender extends javax.swing.JFrame {
     private String nome;
             
    public janelaVender(Controller control) {
+       
         this.control = control;
         modelo = new Cotacao(); 
         this.control = control;
@@ -34,8 +33,10 @@ public class janelaVender extends javax.swing.JFrame {
         this.nome = control.getNome();
         initComponents();
         exibirValores();
+        
     }
    
+   //Exibe cotação
    public void exibirValores(){
         
      String valores = "Bitcoin: R$ " + String.format("%.2f", modelo.getValorBitcoin()) + "\n"
@@ -45,11 +46,13 @@ public class janelaVender extends javax.swing.JFrame {
         
     }
    
+   //Realiza a condição de qual botão ta selecionado
    public void botoes(){
             
        btBit.addItemListener(new ItemListener() {
            
         @Override
+        
         public void itemStateChanged(ItemEvent e) {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 btEthe.setSelected(false);
@@ -57,11 +60,12 @@ public class janelaVender extends javax.swing.JFrame {
                 exibirCotacaoComTaxa("Bitcoin");
             }
         }
-        
         });
 
         btEthe.addItemListener(new ItemListener() {
+            
         @Override
+        
         public void itemStateChanged(ItemEvent e) {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 btBit.setSelected(false);
@@ -72,7 +76,9 @@ public class janelaVender extends javax.swing.JFrame {
          });
 
     btRip.addItemListener(new ItemListener() {
+        
         @Override
+        
         public void itemStateChanged(ItemEvent e) {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 btBit.setSelected(false);
@@ -83,6 +89,7 @@ public class janelaVender extends javax.swing.JFrame {
         });
        }
    
+   //Exibe cotação com taxa
    private void exibirCotacaoComTaxa(String tipo) {
         double valor = 0;
         double taxa = 0;
@@ -108,6 +115,8 @@ public class janelaVender extends javax.swing.JFrame {
         txtConfiraValor.setText(resultado);
     }
    
+   
+   //Calcula o valor final com as taxas, cotação e quantidade
    private void calcularValorFinal() {
         String tipo = "";
 
@@ -148,6 +157,8 @@ public class janelaVender extends javax.swing.JFrame {
         }
     }     
 
+   
+   //Metodo para conectar com o banco de dados para realizar a atualização
     private void realizarVenda() throws SQLException {
         String tipo = "";
 
@@ -163,8 +174,10 @@ public class janelaVender extends javax.swing.JFrame {
             
                 double quantidade = Double.parseDouble(txtQnt.getText());
                 vao.vender(tipo, quantidade);
+                
                 JOptionPane.showMessageDialog(null, "Venda realizada com sucesso!"
                 , "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                
         } else {
             txtConfiraValor.setText("Selecione uma moeda antes de calcular.");
         }
@@ -192,21 +205,20 @@ public class janelaVender extends javax.swing.JFrame {
         lblTituloValor = new javax.swing.JLabel();
         txtConfiraValor = new javax.swing.JTextField();
         btVender = new javax.swing.JButton();
-        lblTitloSaldo = new javax.swing.JLabel();
-        txtCampoSaldo = new javax.swing.JTextField();
         btBit = new javax.swing.JToggleButton();
         btEthe = new javax.swing.JToggleButton();
         btRip = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(204, 153, 255));
 
         lblTituloSacar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTituloSacar.setText("VENDER CRIPTOMOEDAS");
 
-        btSairSacar.setBackground(new java.awt.Color(255, 102, 0));
+        btSairSacar.setBackground(new java.awt.Color(51, 0, 51));
         btSairSacar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btSairSacar.setForeground(new java.awt.Color(255, 255, 255));
         btSairSacar.setText("X");
         btSairSacar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -248,10 +260,6 @@ public class janelaVender extends javax.swing.JFrame {
             }
         });
 
-        lblTitloSaldo.setText("SALDO (REAIS):");
-
-        txtCampoSaldo.setEditable(false);
-
         btBit.setText("Bitcoin");
 
         btEthe.setText("Ethereum");
@@ -265,10 +273,6 @@ public class janelaVender extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(86, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTitloSaldo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCampoSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbltituloCotacao)
                     .addComponent(lblTituloEscolha)
@@ -328,11 +332,7 @@ public class janelaVender extends javax.swing.JFrame {
                 .addComponent(txtConfiraValor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btVender, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitloSaldo)
-                    .addComponent(txtCampoSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -354,7 +354,8 @@ public class janelaVender extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairSacarMouseClicked
 
     private void btSairSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairSacarActionPerformed
-        // TODO add your handling code here:
+         janelaMenu menu = new janelaMenu(control);
+        menu.setVisible(true);
     }//GEN-LAST:event_btSairSacarActionPerformed
 
     private void btCalcularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btCalcularMouseClicked
@@ -414,13 +415,11 @@ public class janelaVender extends javax.swing.JFrame {
     private javax.swing.JButton btVender;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblTitloSaldo;
     private javax.swing.JLabel lblTituloEscolha;
     private javax.swing.JLabel lblTituloSacar;
     private javax.swing.JLabel lblTituloValor;
     private javax.swing.JLabel lbltituloCotacao;
     private javax.swing.JTextArea txtAreaCotacao;
-    private javax.swing.JTextField txtCampoSaldo;
     private javax.swing.JTextField txtConfiraValor;
     private javax.swing.JTextField txtQnt;
     private javax.swing.JLabel txtTituloQnt;

@@ -108,19 +108,20 @@ public class janelaLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jSeparator1 = new javax.swing.JSeparator();
+        jProgressBar1 = new javax.swing.JProgressBar();
         pnFundo = new javax.swing.JPanel();
-        txtSenha = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
         btEntrar = new javax.swing.JButton();
         lblNome = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
+        lblTituloCadastro = new javax.swing.JLabel();
+        lblTituloCadastro3 = new javax.swing.JLabel();
+        txtSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pnFundo.setBackground(new java.awt.Color(255, 255, 204));
-
-        txtSenha.setToolTipText("senha");
+        pnFundo.setBackground(new java.awt.Color(204, 102, 255));
 
         txtNome.setToolTipText("cpf");
 
@@ -136,46 +137,66 @@ public class janelaLogin extends javax.swing.JFrame {
         lblSenha.setText("SENHA:");
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
         lblTitulo.setText("LOGIN");
+
+        lblTituloCadastro.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        lblTituloCadastro.setForeground(new java.awt.Color(255, 255, 255));
+        lblTituloCadastro.setText("Olha quem voltou!");
+
+        lblTituloCadastro3.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
+        lblTituloCadastro3.setForeground(new java.awt.Color(102, 0, 102));
+        lblTituloCadastro3.setText("PURPLANK");
 
         javax.swing.GroupLayout pnFundoLayout = new javax.swing.GroupLayout(pnFundo);
         pnFundo.setLayout(pnFundoLayout);
         pnFundoLayout.setHorizontalGroup(
             pnFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnFundoLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(lblTituloCadastro3)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnFundoLayout.createSequentialGroup()
                 .addContainerGap(102, Short.MAX_VALUE)
                 .addGroup(pnFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnFundoLayout.createSequentialGroup()
-                            .addComponent(btEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(157, 157, 157))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnFundoLayout.createSequentialGroup()
-                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(97, 97, 97)))
-                    .addGroup(pnFundoLayout.createSequentialGroup()
-                        .addGroup(pnFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNome)
-                            .addComponent(lblSenha)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnFundoLayout.createSequentialGroup()
-                                .addGap(76, 76, 76)
-                                .addComponent(lblTitulo)))
-                        .addContainerGap())))
+                                .addGap(58, 58, 58)
+                                .addComponent(btEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(157, 157, 157))
+                            .addGroup(pnFundoLayout.createSequentialGroup()
+                                .addGroup(pnFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblNome)
+                                    .addComponent(lblSenha)
+                                    .addGroup(pnFundoLayout.createSequentialGroup()
+                                        .addGap(76, 76, 76)
+                                        .addComponent(lblTitulo)))
+                                .addContainerGap()))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnFundoLayout.createSequentialGroup()
+                            .addComponent(lblTituloCadastro)
+                            .addGap(119, 119, 119)))))
         );
         pnFundoLayout.setVerticalGroup(
             pnFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnFundoLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addContainerGap()
+                .addComponent(lblTituloCadastro3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(lblTituloCadastro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(lblNome)
                 .addGap(2, 2, 2)
                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(btEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(90, 90, 90))
         );
@@ -205,12 +226,15 @@ public class janelaLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEntrar;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTituloCadastro;
+    private javax.swing.JLabel lblTituloCadastro3;
     private javax.swing.JPanel pnFundo;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtSenha;
+    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

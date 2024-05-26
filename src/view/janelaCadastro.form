@@ -36,7 +36,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="ff" red="ff" type="rgb"/>
+          <Color blue="99" green="0" red="99" type="rgb"/>
         </Property>
       </Properties>
 
@@ -44,22 +44,19 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="lblTituloCadastro" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="73" max="32767" attributes="0"/>
-                  <Component id="btEntrarCadastrado" min="-2" pref="160" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtSenhaCadastro" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
-                              <Component id="txtCpfCadastro" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
                               <Component id="lblCpfCadastro" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblSenhaCadastro" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="txtNomeCadastro" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
                               <Component id="lblNomeCadastro" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTituloCadastro2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="txtSenhaCadastro" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtCpfCadastro" alignment="0" pref="201" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -67,21 +64,43 @@
                           <Component id="btEntrarCadastro" min="-2" pref="105" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace pref="67" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="lblTituloCadastro" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
+                          <Component id="lblTituloCadastro1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="0" pref="132" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  <Component id="lblTituloCadastro3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btEntrarCadastrado" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                          <Component id="lblTituloCadastro" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="btEntrarCadastrado" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btEntrarCadastrado" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                      <Component id="lblTituloCadastro3" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="37" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="lblTituloCadastro" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="lblTituloCadastro1" min="-2" pref="25" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lblTituloCadastro2" min="-2" pref="17" max="-2" attributes="0"/>
+                  <EmptySpace pref="23" max="32767" attributes="0"/>
                   <Component id="lblNomeCadastro" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                   <Component id="txtNomeCadastro" min="-2" pref="32" max="-2" attributes="0"/>
@@ -92,8 +111,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblSenhaCadastro" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtSenhaCadastro" min="-2" pref="32" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <Component id="txtSenhaCadastro" min="-2" pref="31" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="btEntrarCadastro" min="-2" pref="33" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
@@ -104,37 +123,48 @@
         <Component class="javax.swing.JLabel" name="lblTituloCadastro">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="1"/>
+              <Font name="Segoe UI" size="18" style="2"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ol&#xe1;, cadastre-se:"/>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Seja bem-vindo (a), "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCpfCadastro">
           <Properties>
-            <Property name="text" type="java.lang.String" value="CPF:"/>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="CPF (sem pontos):"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCpfCadastro">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="cpf"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtSenhaCadastro">
-          <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="senha"/>
+            <Property name="toolTipText" type="java.lang.String" value="11 digitos"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblSenhaCadastro">
           <Properties>
-            <Property name="text" type="java.lang.String" value="SENHA:"/>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="SENHA (6 digitos):"/>
+            <Property name="toolTipText" type="java.lang.String" value="6 digitos numericos"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btEntrarCadastrado">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="ff" red="ff" type="rgb"/>
+              <Color blue="ff" green="66" red="cc" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="J&#xe1; tenho cadastro"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Sou cadastrado (a)"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btEntrarCadastradoMouseClicked"/>
@@ -142,12 +172,15 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblNomeCadastro">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="NOME:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNomeCadastro">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="cpf"/>
+            <Property name="toolTipText" type="java.lang.String" value="nome"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btEntrarCadastro">
@@ -157,6 +190,41 @@
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btEntrarCadastroMouseClicked"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblTituloCadastro1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="CADASTRE-SE"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblTituloCadastro2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="2"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="e comece a investir no futuro"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblTituloCadastro3">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Impact" size="14" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="PURPLANK"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="txtSenhaCadastro">
         </Component>
       </SubComponents>
     </Container>

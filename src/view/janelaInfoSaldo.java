@@ -55,9 +55,10 @@ public class janelaInfoSaldo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(204, 153, 255));
 
         lblTituloSaldoAuto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTituloSaldoAuto.setForeground(new java.awt.Color(255, 255, 255));
         lblTituloSaldoAuto.setText("SEU SALDO ATUALIZADO");
 
         lblNomeSaldo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -95,8 +96,9 @@ public class janelaInfoSaldo extends javax.swing.JFrame {
         lblRippleSaldo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblRippleSaldo.setText("Ripple:");
 
-        btSairSaldo.setBackground(new java.awt.Color(255, 102, 0));
+        btSairSaldo.setBackground(new java.awt.Color(102, 0, 102));
         btSairSaldo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btSairSaldo.setForeground(new java.awt.Color(255, 255, 255));
         btSairSaldo.setText("X");
         btSairSaldo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

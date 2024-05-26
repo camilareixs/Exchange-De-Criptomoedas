@@ -64,6 +64,7 @@ public class Controller {
     }
      
     
+    
     //Método para verificar se a senha fornecida está correta.
     public boolean senhaCorreta(String senha, Controller control) {
         

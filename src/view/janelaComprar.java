@@ -20,13 +20,7 @@ import javax.swing.JOptionPane;
 
 
 public class janelaComprar extends javax.swing.JFrame {
-    
-    private Controller control;
-    private Cotacao modelo;
-    private String nome;
-    private ComprarDAO dao;
-    
-     
+
     public janelaComprar(Controller control) {
         modelo = new Cotacao(); 
         this.control = control;
@@ -230,21 +224,21 @@ public class janelaComprar extends javax.swing.JFrame {
         lblTituloValor = new javax.swing.JLabel();
         txtConfiraValor = new javax.swing.JTextField();
         btComprar = new javax.swing.JButton();
-        lblTitloSaldo = new javax.swing.JLabel();
-        txtCampoSaldo = new javax.swing.JTextField();
         btBit = new javax.swing.JToggleButton();
         btEthe = new javax.swing.JToggleButton();
         btRip = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(204, 102, 255));
 
         lblTituloSacar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTituloSacar.setForeground(new java.awt.Color(255, 255, 255));
         lblTituloSacar.setText("COMPRAR CRIPTOMOEDAS");
 
-        btSairSacar.setBackground(new java.awt.Color(255, 102, 0));
+        btSairSacar.setBackground(new java.awt.Color(102, 0, 102));
         btSairSacar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btSairSacar.setForeground(new java.awt.Color(255, 255, 255));
         btSairSacar.setText("X");
         btSairSacar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -262,10 +256,13 @@ public class janelaComprar extends javax.swing.JFrame {
         txtAreaCotacao.setRows(5);
         jScrollPane1.setViewportView(txtAreaCotacao);
 
+        lbltituloCotacao.setForeground(new java.awt.Color(255, 255, 255));
         lbltituloCotacao.setText("COTAÇÃO:");
 
+        lblTituloEscolha.setForeground(new java.awt.Color(255, 255, 255));
         lblTituloEscolha.setText("ESCOLHA QUAL DESEJA COMPRAR:");
 
+        txtTituloQnt.setForeground(new java.awt.Color(255, 255, 255));
         txtTituloQnt.setText("INSIRA A QUANTIDADE (ex: 2)");
 
         btCalcular.setText("CALCULAR");
@@ -275,6 +272,7 @@ public class janelaComprar extends javax.swing.JFrame {
             }
         });
 
+        lblTituloValor.setForeground(new java.awt.Color(255, 255, 255));
         lblTituloValor.setText("CONFIRA O VALOR (R$):");
 
         txtConfiraValor.setEditable(false);
@@ -285,10 +283,6 @@ public class janelaComprar extends javax.swing.JFrame {
                 btComprarMouseClicked(evt);
             }
         });
-
-        lblTitloSaldo.setText("SALDO (REAIS):");
-
-        txtCampoSaldo.setEditable(false);
 
         btBit.setText("Bitcoin");
 
@@ -301,48 +295,46 @@ public class janelaComprar extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(71, Short.MAX_VALUE)
+                .addContainerGap(64, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTitloSaldo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCampoSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbltituloCotacao)
-                    .addComponent(lblTituloEscolha)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTituloQnt)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbltituloCotacao)
+                            .addComponent(lblTituloEscolha)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtQnt, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtTituloQnt)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txtQnt, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btCalcular))
+                                    .addComponent(lblTituloValor)
+                                    .addComponent(txtConfiraValor, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(28, 28, 28)
+                                        .addComponent(btComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btBit)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btCalcular))
-                            .addComponent(lblTituloValor)
-                            .addComponent(txtConfiraValor, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(btComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btEthe)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btRip)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblTituloSacar)
-                        .addGap(61, 61, 61)
-                        .addComponent(btSairSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btBit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btEthe)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btRip)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addComponent(btSairSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(btSairSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(lblTituloSacar)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(lblTituloSacar))
+                    .addComponent(btSairSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lbltituloCotacao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -366,11 +358,7 @@ public class janelaComprar extends javax.swing.JFrame {
                 .addComponent(txtConfiraValor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitloSaldo)
-                    .addComponent(txtCampoSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -381,7 +369,7 @@ public class janelaComprar extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -392,7 +380,8 @@ public class janelaComprar extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairSacarMouseClicked
 
     private void btSairSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairSacarActionPerformed
-        // TODO add your handling code here:
+         janelaMenu menu = new janelaMenu(control);
+        menu.setVisible(true);
     }//GEN-LAST:event_btSairSacarActionPerformed
 
     private void btComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btComprarMouseClicked
@@ -442,7 +431,12 @@ public class janelaComprar extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
+    
+    private Controller control;
+    private Cotacao modelo;
+    private String nome;
+    private ComprarDAO dao;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btBit;
     private javax.swing.JButton btCalcular;
@@ -452,13 +446,11 @@ public class janelaComprar extends javax.swing.JFrame {
     private javax.swing.JButton btSairSacar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblTitloSaldo;
     private javax.swing.JLabel lblTituloEscolha;
     private javax.swing.JLabel lblTituloSacar;
     private javax.swing.JLabel lblTituloValor;
     private javax.swing.JLabel lbltituloCotacao;
     private javax.swing.JTextArea txtAreaCotacao;
-    private javax.swing.JTextField txtCampoSaldo;
     private javax.swing.JTextField txtConfiraValor;
     private javax.swing.JTextField txtQnt;
     private javax.swing.JLabel txtTituloQnt;

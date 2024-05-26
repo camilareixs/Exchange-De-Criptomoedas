@@ -30,13 +30,15 @@ public class janelaExtrato extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(102, 0, 102));
 
         lblTituloExtraAuto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTituloExtraAuto.setForeground(new java.awt.Color(255, 255, 255));
         lblTituloExtraAuto.setText("SEU EXTRATO ATUALIZADO");
 
-        btSairExtrato.setBackground(new java.awt.Color(255, 102, 0));
+        btSairExtrato.setBackground(new java.awt.Color(204, 153, 255));
         btSairExtrato.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btSairExtrato.setForeground(new java.awt.Color(255, 255, 255));
         btSairExtrato.setText("X");
         btSairExtrato.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

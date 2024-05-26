@@ -42,15 +42,17 @@ public class janelaSacar extends javax.swing.JFrame {
         btSacar = new javax.swing.JButton();
         lblSaldoSacar = new javax.swing.JLabel();
         txtMostrarSaldoSacar = new javax.swing.JTextField();
+        lblSaldoSacar1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(153, 0, 153));
 
         lblTituloSacar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTituloSacar.setForeground(new java.awt.Color(255, 255, 255));
         lblTituloSacar.setText("SACAR REAIS");
 
-        btSairSacar.setBackground(new java.awt.Color(255, 102, 0));
+        btSairSacar.setBackground(new java.awt.Color(204, 153, 255));
         btSairSacar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btSairSacar.setText("X");
         btSairSacar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -72,7 +74,12 @@ public class janelaSacar extends javax.swing.JFrame {
             }
         });
 
+        lblSaldoSacar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblSaldoSacar.setForeground(new java.awt.Color(255, 255, 255));
         lblSaldoSacar.setText("SALDO ATUAL:");
+
+        lblSaldoSacar1.setForeground(new java.awt.Color(255, 255, 255));
+        lblSaldoSacar1.setText("insira o valor do saque:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -84,7 +91,7 @@ public class janelaSacar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btSairSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(101, Short.MAX_VALUE)
+                .addContainerGap(97, Short.MAX_VALUE)
                 .addComponent(lblSaldoSacar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtMostrarSaldoSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -92,11 +99,13 @@ public class janelaSacar extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(txtInserirSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(145, 145, 145)
-                        .addComponent(btSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSaldoSacar1)
+                            .addComponent(txtInserirSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -107,7 +116,9 @@ public class janelaSacar extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addComponent(lblTituloSacar))
                     .addComponent(btSairSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(101, 101, 101)
+                .addGap(79, 79, 79)
+                .addComponent(lblSaldoSacar1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtInserirSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -311,6 +322,7 @@ public class janelaSacar extends javax.swing.JFrame {
     private javax.swing.JButton btSairSacar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblSaldoSacar;
+    private javax.swing.JLabel lblSaldoSacar1;
     private javax.swing.JLabel lblTituloSacar;
     private javax.swing.JTextField txtInserirSacar;
     private javax.swing.JTextField txtMostrarSaldoSacar;

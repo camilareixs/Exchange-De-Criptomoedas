@@ -20,7 +20,8 @@ public class janelaMenu extends javax.swing.JFrame {
     private Controller control;
     private Cotacao modelo;
  
-   public janelaMenu(Controller control) { 
+    
+    public janelaMenu(Controller control) { 
    
         this.control = control;
         this.modelo = new Cotacao();
@@ -132,7 +133,7 @@ public class janelaMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(204, 153, 255));
 
         txtExibirMenu.setColumns(20);
         txtExibirMenu.setRows(5);

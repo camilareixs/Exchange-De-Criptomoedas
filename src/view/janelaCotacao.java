@@ -61,10 +61,11 @@ public class janelaCotacao extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(102, 0, 102));
 
-        btSairCotacao.setBackground(new java.awt.Color(255, 102, 0));
+        btSairCotacao.setBackground(new java.awt.Color(204, 102, 255));
         btSairCotacao.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btSairCotacao.setForeground(new java.awt.Color(255, 255, 255));
         btSairCotacao.setText("X");
         btSairCotacao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -78,12 +79,16 @@ public class janelaCotacao extends javax.swing.JFrame {
         });
 
         lblTituloCotacao.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTituloCotacao.setForeground(new java.awt.Color(255, 255, 255));
         lblTituloCotacao.setText("COTAÇÃO DE CRIPTOMOEDAS");
 
+        lblBit.setForeground(new java.awt.Color(255, 255, 255));
         lblBit.setText("BITCOIN");
 
+        lblEthe.setForeground(new java.awt.Color(255, 255, 255));
         lblEthe.setText("ETHEREUM");
 
+        lblRip.setForeground(new java.awt.Color(255, 255, 255));
         lblRip.setText("RIPPLE");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

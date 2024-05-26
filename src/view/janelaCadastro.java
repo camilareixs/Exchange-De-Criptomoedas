@@ -20,7 +20,6 @@ import java.sql.SQLException;
 
 public class janelaCadastro extends javax.swing.JFrame {
     
-private Controller control;
 
     public janelaCadastro() {
         initComponents();
@@ -35,39 +34,47 @@ private Controller control;
         lblTituloCadastro = new javax.swing.JLabel();
         lblCpfCadastro = new javax.swing.JLabel();
         txtCpfCadastro = new javax.swing.JTextField();
-        txtSenhaCadastro = new javax.swing.JTextField();
         lblSenhaCadastro = new javax.swing.JLabel();
         btEntrarCadastrado = new javax.swing.JButton();
         lblNomeCadastro = new javax.swing.JLabel();
         txtNomeCadastro = new javax.swing.JTextField();
         btEntrarCadastro = new javax.swing.JButton();
+        lblTituloCadastro1 = new javax.swing.JLabel();
+        lblTituloCadastro2 = new javax.swing.JLabel();
+        lblTituloCadastro3 = new javax.swing.JLabel();
+        txtSenhaCadastro = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel1.setBackground(new java.awt.Color(153, 0, 153));
 
-        lblTituloCadastro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblTituloCadastro.setText("Olá, cadastre-se:");
+        lblTituloCadastro.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        lblTituloCadastro.setForeground(new java.awt.Color(255, 255, 255));
+        lblTituloCadastro.setText("Seja bem-vindo (a), ");
 
-        lblCpfCadastro.setText("CPF:");
+        lblCpfCadastro.setForeground(new java.awt.Color(255, 255, 255));
+        lblCpfCadastro.setText("CPF (sem pontos):");
 
-        txtCpfCadastro.setToolTipText("cpf");
+        txtCpfCadastro.setToolTipText("11 digitos");
 
-        txtSenhaCadastro.setToolTipText("senha");
+        lblSenhaCadastro.setForeground(new java.awt.Color(255, 255, 255));
+        lblSenhaCadastro.setText("SENHA (6 digitos):");
+        lblSenhaCadastro.setToolTipText("6 digitos numericos");
 
-        lblSenhaCadastro.setText("SENHA:");
-
-        btEntrarCadastrado.setBackground(new java.awt.Color(255, 255, 204));
-        btEntrarCadastrado.setText("Já tenho cadastro");
+        btEntrarCadastrado.setBackground(new java.awt.Color(204, 102, 255));
+        btEntrarCadastrado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btEntrarCadastrado.setForeground(new java.awt.Color(255, 255, 255));
+        btEntrarCadastrado.setText("Sou cadastrado (a)");
         btEntrarCadastrado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btEntrarCadastradoMouseClicked(evt);
             }
         });
 
+        lblNomeCadastro.setForeground(new java.awt.Color(255, 255, 255));
         lblNomeCadastro.setText("NOME:");
 
-        txtNomeCadastro.setToolTipText("cpf");
+        txtNomeCadastro.setToolTipText("nome");
 
         btEntrarCadastro.setText("Cadastrar");
         btEntrarCadastro.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -76,40 +83,67 @@ private Controller control;
             }
         });
 
+        lblTituloCadastro1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTituloCadastro1.setForeground(new java.awt.Color(255, 255, 255));
+        lblTituloCadastro1.setText("CADASTRE-SE");
+
+        lblTituloCadastro2.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        lblTituloCadastro2.setForeground(new java.awt.Color(255, 255, 255));
+        lblTituloCadastro2.setText("e comece a investir no futuro");
+
+        lblTituloCadastro3.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
+        lblTituloCadastro3.setForeground(new java.awt.Color(255, 255, 255));
+        lblTituloCadastro3.setText("PURPLANK");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(lblTituloCadastro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addComponent(btEntrarCadastrado, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(91, 91, 91)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSenhaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCpfCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblCpfCadastro)
                             .addComponent(lblSenhaCadastro)
                             .addComponent(txtNomeCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNomeCadastro)))
+                            .addComponent(lblNomeCadastro)
+                            .addComponent(lblTituloCadastro2)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtSenhaCadastro, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtCpfCadastro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(137, 137, 137)
                         .addComponent(btEntrarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(lblTituloCadastro))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(lblTituloCadastro1)))
+                .addGap(0, 132, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(lblTituloCadastro3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btEntrarCadastrado))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(lblTituloCadastro))
-                    .addComponent(btEntrarCadastrado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btEntrarCadastrado, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTituloCadastro3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblTituloCadastro)
+                .addGap(18, 18, 18)
+                .addComponent(lblTituloCadastro1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTituloCadastro2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(lblNomeCadastro)
                 .addGap(2, 2, 2)
                 .addComponent(txtNomeCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -120,8 +154,8 @@ private Controller control;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSenhaCadastro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSenhaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addComponent(txtSenhaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addComponent(btEntrarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
         );
@@ -152,28 +186,37 @@ private Controller control;
     String cpf = txtCpfCadastro.getText();
     String senha = txtSenhaCadastro.getText();
 
-    //Confere se o cpf tem 11 digitos e a senha 6 digitos numericos
-    if (cpf.length() == 11 && nome.length() > 0 && senha.length() == 6) {
-        
+    // Verificação e inserção de dados no banco de dados
+    if (cpf.length() == 11 && nome.length() > 0 && senha.length() == 6 &&
+                            cpf.matches("\\d{11}") && senha.matches("\\d{6}")) {
+    
         CadastroDAO cadastroDAO = new CadastroDAO();
-        
-        try {
-            
-            cadastroDAO.inserir(nome, cpf, senha);
-            control.setNome(nome);
-            control.setCpf(cpf);
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        
+
+    try {
+        cadastroDAO.inserir(nome, cpf, senha);
+        control.setNome(nome);
+        control.setCpf(cpf);
+
         janelaLogin login = new janelaLogin(nome, cpf);
         login.setVisible(true);
-        
-    } else {
-        // Mostra uma mensagem de erro se os dados não estiverem corretos
-        JOptionPane.showMessageDialog(this, "Por favor, insira os dados corretamente.");
+    } catch (SQLException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Erro ao acessar o banco de dados.",
+                                             "Erro", JOptionPane.ERROR_MESSAGE);
     }
+} else {
+    // Mensagem de erro se os dados não estiverem corretos
+    if (cpf.length() != 11 || !cpf.matches("\\d{11}")) {
+        JOptionPane.showMessageDialog(this, "Erro: Digite um CPF sem pontos e "
+                        + "com 11 dígitos.", "Erro", JOptionPane.ERROR_MESSAGE);
+    } else if (senha.length() != 6 || !senha.matches("\\d{6}")) {
+        JOptionPane.showMessageDialog(this, "Erro: Digite uma senha de 6 dígitos"
+                            + " numéricos.", "Erro", JOptionPane.ERROR_MESSAGE);
+    } else {
+        JOptionPane.showMessageDialog(this, "Por favor, insira os dados "
+                          + "corretamente.", "Erro", JOptionPane.ERROR_MESSAGE);
+    }
+}
     }//GEN-LAST:event_btEntrarCadastroMouseClicked
 
     
@@ -289,11 +332,10 @@ private Controller control;
     public JTextField getTxtSenhaCadastro() {
         return txtSenhaCadastro;
     }
-
-    public void setTxtSenhaCadastro(JTextField txtSenhaCadastro) {
-        this.txtSenhaCadastro = txtSenhaCadastro;
-    }
-
+    
+    
+private Controller control;
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEntrarCadastrado;
     private javax.swing.JButton btEntrarCadastro;
@@ -302,8 +344,11 @@ private Controller control;
     private javax.swing.JLabel lblNomeCadastro;
     private javax.swing.JLabel lblSenhaCadastro;
     private javax.swing.JLabel lblTituloCadastro;
+    private javax.swing.JLabel lblTituloCadastro1;
+    private javax.swing.JLabel lblTituloCadastro2;
+    private javax.swing.JLabel lblTituloCadastro3;
     private javax.swing.JTextField txtCpfCadastro;
     private javax.swing.JTextField txtNomeCadastro;
-    private javax.swing.JTextField txtSenhaCadastro;
+    private javax.swing.JPasswordField txtSenhaCadastro;
     // End of variables declaration//GEN-END:variables
 }

@@ -51,6 +51,7 @@ public class Controller {
 
     private Controller control;
     
+  
     
     // Construtor que inicializa os atributos do controlador
     public Controller(String nome, String cpf) {
@@ -61,12 +62,13 @@ public class Controller {
         this.deposito = new janelaDeposito(nome);
         this.vender = new janelaVender(this);
         this.comprar = new janelaComprar(this);
+ 
     }
      
     
     
     //Método para verificar se a senha fornecida está correta.
-    public boolean senhaCorreta(String senha, Controller control) {
+    /*public boolean senhaCorreta(String senha) {
         
     try {
         
@@ -78,7 +80,7 @@ public class Controller {
         ("SELECT senha FROM cadastro WHERE nome = ?");
 
        
-        pstmt.setString(1, control.getNome());
+        pstmt.setString(1, this.getNome());
 
    
         ResultSet rs = pstmt.executeQuery();
@@ -92,6 +94,7 @@ public class Controller {
     }
     return false;
 }
+*/
     
     
     // Getters e setters para os atributos

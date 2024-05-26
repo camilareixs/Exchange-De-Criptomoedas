@@ -153,8 +153,7 @@ public class janelaCotacao extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairCotacaoMouseClicked
 
     private void btSairCotacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairCotacaoActionPerformed
-        janelaMenu menu = new janelaMenu(control);
-        menu.setVisible(true);
+         dispose();
     }//GEN-LAST:event_btSairCotacaoActionPerformed
 
     /**

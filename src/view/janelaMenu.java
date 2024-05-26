@@ -30,23 +30,25 @@ public class janelaMenu extends javax.swing.JFrame {
         setupActionListeners();
         
     }
+    
+  
    
 
     //Imprime o manu
      private void setupMenu() {
         String menu = "1. Consultar saldo\n"
-                    + "2. Consultar extrato\n"
+                    + "2. Consultar extrato (em construção)\n"
                     + "3. Depositar\n"
                     + "4. Sacar\n"
                     + "5. Comprar criptomoedas\n"
                     + "6. Vender criptomoedas\n"
-                    + "7. Atualizar cotação\n"
-                    + "8. Sair";
+                    + "7. Atualizar cotação\n";
+        
         txtExibirMenu.setText(menu);
         txtExibirMenu.setEditable(false);
     }
     
-     //condições do menu
+    //condições do menu
     private void setupActionListeners() {
     btEscolherOp.addActionListener(new ActionListener() {
         @Override
@@ -59,12 +61,6 @@ public class janelaMenu extends javax.swing.JFrame {
                     janelaSenhaSaldo senhaSaldo = new janelaSenhaSaldo
                                                       (control, opcao);
                     senhaSaldo.setVisible(true);
-                    break;
-
-                case "2":
-                    janelaSenhaSaldo extrato = new janelaSenhaSaldo
-                                                   (control, opcao);
-                    extrato.setVisible(true);
                     break;
 
                 case "3":
@@ -97,11 +93,7 @@ public class janelaMenu extends javax.swing.JFrame {
                     cotacao.setVisible(true);
                     break;
                        
-                        
-                   
-                    case "8":
-                        // Sair
-                        break;
+                    
                     default:
                         JOptionPane.showMessageDialog(null, "Por favor, "
                                              + "insira uma opção válida.");

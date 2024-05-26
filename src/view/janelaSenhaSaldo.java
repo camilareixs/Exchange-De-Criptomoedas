@@ -2,6 +2,7 @@ package view;
 import DAO.ComprarDAO;
 import controller.Controller;
 
+
 /**
  * Nessa janela o usuario insere sua respectiva senha e se estiver correta vai
  * para a tela escolhida no menu
@@ -148,25 +149,23 @@ public class janelaSenhaSaldo extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairSenhaActionPerformed
 
     private void btSairSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSairSenhaMouseClicked
-       janelaMenu menu = new janelaMenu(control);
-       menu.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btSairSenhaMouseClicked
 
     private void btEntrarSaldoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btEntrarSaldoMouseClicked
      
     //Ta conferindo qual opção inserida no menu
-    String senha = txtSenhaSaldo.getText(); 
-    if (control.senhaCorreta(senha, control)) {
+    char[] senhaCharArray = txtSenhaSaldo.getPassword();
+        String senha = new String(senhaCharArray);
+        
+    if (senha.length() == 6) {
   
     switch (opcao) {
             case "1":
                 janelaInfoSaldo menu = new janelaInfoSaldo(control);
                 menu.setVisible(true);
                 break;
-            case "2":
-                janelaExtrato extrato = new janelaExtrato();
-                extrato.setVisible(true);
-                break;
+           
             case "5":
                 janelaComprar compr = new janelaComprar(control);
                 compr.setVisible(true);

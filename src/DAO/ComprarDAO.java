@@ -193,5 +193,26 @@ public class ComprarDAO {
         }
     }
    }
+   
+   // Método para obter todos os saldos
+    public void obterSaldos() throws SQLException {
+        String nome = control.getNome();
+        
+        String sql = "SELECT reais, bitcoin, ethereum, ripple FROM cadastro WHERE nome = ?";
+        
+        try (Connection conn = conexao.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setString(1, nome);
+            
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    control.setSaldoReais(rs.getDouble("reais"));
+                    control.setSaldoBitcoin(rs.getDouble("bitcoin"));
+                    control.setSaldoEthereum(rs.getDouble("ethereum"));
+                    control.setSaldoRipple(rs.getDouble("ripple"));
+                }
+            }
+        }}
 }
 

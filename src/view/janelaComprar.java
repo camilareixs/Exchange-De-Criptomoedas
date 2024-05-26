@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 
 
 public class janelaComprar extends javax.swing.JFrame {
+    
 
     public janelaComprar(Controller control) {
         modelo = new Cotacao(); 
@@ -380,8 +381,7 @@ public class janelaComprar extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairSacarMouseClicked
 
     private void btSairSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairSacarActionPerformed
-         janelaMenu menu = new janelaMenu(control);
-        menu.setVisible(true);
+       dispose();
     }//GEN-LAST:event_btSairSacarActionPerformed
 
     private void btComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btComprarMouseClicked

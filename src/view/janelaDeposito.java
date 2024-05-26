@@ -148,12 +148,10 @@ public class janelaDeposito extends javax.swing.JFrame {
      
     private void btSairDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairDepositoActionPerformed
 
-    janelaExtrato ext = new janelaExtrato();
-    ext.setVisible(true);
     }//GEN-LAST:event_btSairDepositoActionPerformed
 
     private void btSairDepositoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSairDepositoMouseClicked
-       
+       dispose();
     }//GEN-LAST:event_btSairDepositoMouseClicked
 
     private void btDepositarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDepositarMouseClicked

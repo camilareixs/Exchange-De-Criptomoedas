@@ -148,7 +148,7 @@ public class janelaSacar extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairSacarActionPerformed
 
     private void btSairSacarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSairSacarMouseClicked
-   
+   dispose();
     }//GEN-LAST:event_btSairSacarMouseClicked
 
     private void btSacarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSacarMouseClicked

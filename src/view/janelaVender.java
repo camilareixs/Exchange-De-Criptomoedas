@@ -350,12 +350,11 @@ public class janelaVender extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSairSacarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSairSacarMouseClicked
-
+ dispose();
     }//GEN-LAST:event_btSairSacarMouseClicked
 
     private void btSairSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairSacarActionPerformed
-         janelaMenu menu = new janelaMenu(control);
-        menu.setVisible(true);
+       
     }//GEN-LAST:event_btSairSacarActionPerformed
 
     private void btCalcularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btCalcularMouseClicked

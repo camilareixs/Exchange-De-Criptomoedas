@@ -1,6 +1,9 @@
 package view;
 
+import DAO.ComprarDAO;
 import controller.Controller;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  * Nessa janela o usuario consegue vizualizar todas as suas informações
@@ -22,13 +25,21 @@ public class janelaInfoSaldo extends javax.swing.JFrame {
     
     //vai atualizar as informações
     public void atualizarInfo() {
-        
-        txtNomeSaldo.setText("" + control.getNome());
-        txtCpfSaldo.setText("" + control.getCpf());
-        txtReaisSaldo.setText("" + control.getSaldoReais());
-        txtBitcoinSaldo.setText("" + control.getSaldoBitcoin());
-        txtEthereumSaldo.setText("" + control.getSaldoEthereum());
-        txtRippleSaldo.setText("" + control.getSaldoRipple());
+        try {
+        // Atualiza os saldos do controlador a partir do banco de dados
+        ComprarDAO dao = new ComprarDAO(control);
+        dao.obterSaldos();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Erro ao obter saldos do banco de dados.");
+    }
+
+    // Atualiza os campos de texto na interface gráfica
+    txtNomeSaldo.setText("" + control.getNome());
+    txtCpfSaldo.setText("" + control.getCpf());
+    txtReaisSaldo.setText("" + control.getSaldoReais());
+    txtBitcoinSaldo.setText("" + control.getSaldoBitcoin());
+    txtEthereumSaldo.setText("" + control.getSaldoEthereum());
+    txtRippleSaldo.setText("" + control.getSaldoRipple());
         
     }
     
@@ -204,8 +215,7 @@ public class janelaInfoSaldo extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairSaldoActionPerformed
 
     private void btSairSaldoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSairSaldoMouseClicked
-        janelaMenu menu = new janelaMenu(control);
-        menu.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btSairSaldoMouseClicked
 
     private void txtReaisSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReaisSaldoActionPerformed

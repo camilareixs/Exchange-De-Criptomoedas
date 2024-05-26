@@ -4,6 +4,7 @@ import controller.Controller;
 
 /**
  * Nessa janela é possivel vizualizar o extrato do usuario logado
+ * Não deu tempo de conseguir construir
  * 
  * @author Camila Reis
  * RA 222220378
@@ -101,9 +102,7 @@ public class janelaExtrato extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairExtratoActionPerformed
 
     private void btSairExtratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btSairExtratoMouseClicked
-        janelaMenu menu = new janelaMenu(control);
-
-        menu.setVisible(true);
+         dispose();
     }//GEN-LAST:event_btSairExtratoMouseClicked
 
     /**
